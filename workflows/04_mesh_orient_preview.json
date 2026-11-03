@@ -1,0 +1,401 @@
+{
+ "last_node_id": 5,
+ "last_link_id": 5,
+ "nodes": [
+  {
+   "id": 1,
+   "type": "JarJarLoadMesh",
+   "pos": [
+    40,
+    60
+   ],
+   "size": [
+    320,
+    184
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "file_path",
+     "type": "STRING",
+     "widget": {
+      "name": "file_path"
+     },
+     "link": null,
+     "localized_name": "file_path"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "links": [
+      1
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarLoadMesh"
+   },
+   "widgets_values": [
+    "D:\\EXAMPLE\\models\\character.glb"
+   ],
+   "widgets_values_named": {
+    "file_path": "D:\\EXAMPLE\\models\\character.glb"
+   }
+  },
+  {
+   "id": 2,
+   "type": "JarJarOrientMesh",
+   "pos": [
+    420,
+    60
+   ],
+   "size": [
+    320,
+    344
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "link": 1,
+     "localized_name": "mesh"
+    },
+    {
+     "name": "rotate_x",
+     "type": "FLOAT",
+     "widget": {
+      "name": "rotate_x"
+     },
+     "link": null,
+     "localized_name": "rotate_x"
+    },
+    {
+     "name": "rotate_y",
+     "type": "FLOAT",
+     "widget": {
+      "name": "rotate_y"
+     },
+     "link": null,
+     "localized_name": "rotate_y"
+    },
+    {
+     "name": "rotate_z",
+     "type": "FLOAT",
+     "widget": {
+      "name": "rotate_z"
+     },
+     "link": null,
+     "localized_name": "rotate_z"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "links": [
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarOrientMesh"
+   },
+   "widgets_values": [
+    -90.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "id": 3,
+   "type": "JarJarPreviewMesh",
+   "pos": [
+    800,
+    60
+   ],
+   "size": [
+    340,
+    408
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "link": 2,
+     "localized_name": "mesh"
+    },
+    {
+     "name": "model_3d_info",
+     "type": "LOAD3D_MODEL_INFO",
+     "link": null,
+     "localized_name": "model_3d_info"
+    },
+    {
+     "name": "camera_info",
+     "type": "LOAD3D_CAMERA",
+     "link": 5,
+     "localized_name": "camera_info"
+    },
+    {
+     "name": "width",
+     "type": "INT",
+     "widget": {
+      "name": "width"
+     },
+     "link": null,
+     "localized_name": "width"
+    },
+    {
+     "name": "height",
+     "type": "INT",
+     "widget": {
+      "name": "height"
+     },
+     "link": null,
+     "localized_name": "height"
+    },
+    {
+     "name": "mesh_path",
+     "type": "STRING",
+     "widget": {
+      "name": "mesh_path"
+     },
+     "link": null,
+     "localized_name": "mesh_path"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "links": []
+    },
+    {
+     "name": "model_3d_info",
+     "type": "LOAD3D_MODEL_INFO",
+     "links": []
+    },
+    {
+     "name": "camera_info",
+     "type": "LOAD3D_CAMERA",
+     "links": []
+    },
+    {
+     "name": "width",
+     "type": "INT",
+     "links": []
+    },
+    {
+     "name": "height",
+     "type": "INT",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarPreviewMesh"
+   },
+   "widgets_values": [
+    1024,
+    1024,
+    ""
+   ]
+  },
+  {
+   "id": 4,
+   "type": "JarJarPreviewMeshImage",
+   "pos": [
+    800,
+    480
+   ],
+   "size": [
+    320,
+    344
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "link": 3,
+     "localized_name": "mesh"
+    },
+    {
+     "name": "view",
+     "type": "COMBO",
+     "widget": {
+      "name": "view"
+     },
+     "link": null,
+     "localized_name": "view"
+    },
+    {
+     "name": "size",
+     "type": "INT",
+     "widget": {
+      "name": "size"
+     },
+     "link": null,
+     "localized_name": "size"
+    },
+    {
+     "name": "background",
+     "type": "COMBO",
+     "widget": {
+      "name": "background"
+     },
+     "link": null,
+     "localized_name": "background"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarPreviewMeshImage"
+   },
+   "widgets_values": [
+    "all",
+    512,
+    "dark"
+   ]
+  },
+  {
+   "id": 5,
+   "type": "JarJarFrameCamera",
+   "pos": [
+    420,
+    320
+   ],
+   "size": [
+    320,
+    344
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "link": 4,
+     "localized_name": "mesh"
+    },
+    {
+     "name": "yaw_deg",
+     "type": "FLOAT",
+     "widget": {
+      "name": "yaw_deg"
+     },
+     "link": null,
+     "localized_name": "yaw_deg"
+    },
+    {
+     "name": "pitch_deg",
+     "type": "FLOAT",
+     "widget": {
+      "name": "pitch_deg"
+     },
+     "link": null,
+     "localized_name": "pitch_deg"
+    },
+    {
+     "name": "distance_scale",
+     "type": "FLOAT",
+     "widget": {
+      "name": "distance_scale"
+     },
+     "link": null,
+     "localized_name": "distance_scale"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "camera_info",
+     "type": "LOAD3D_CAMERA",
+     "links": [
+      5
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarFrameCamera"
+   },
+   "widgets_values": [
+    30.0,
+    20.0,
+    2.2
+   ]
+  }
+ ],
+ "links": [
+  [
+   1,
+   1,
+   0,
+   2,
+   0,
+   "TRIMESH"
+  ],
+  [
+   2,
+   2,
+   0,
+   3,
+   0,
+   "TRIMESH"
+  ],
+  [
+   3,
+   2,
+   0,
+   4,
+   0,
+   "TRIMESH"
+  ],
+  [
+   4,
+   2,
+   0,
+   5,
+   0,
+   "TRIMESH"
+  ],
+  [
+   5,
+   5,
+   0,
+   3,
+   2,
+   "LOAD3D_CAMERA"
+  ]
+ ],
+ "groups": [],
+ "extra": {
+  "ds": {
+   "scale": 1.0,
+   "offset": [
+    0,
+    0
+   ]
+  }
+ },
+ "version": 0.4
+}

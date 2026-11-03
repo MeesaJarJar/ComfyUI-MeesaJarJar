@@ -1,0 +1,463 @@
+{
+ "last_node_id": 7,
+ "last_link_id": 6,
+ "nodes": [
+  {
+   "id": 1,
+   "type": "JarJarLoadImagesFromFolder",
+   "pos": [
+    40,
+    60
+   ],
+   "size": [
+    320,
+    184
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "path",
+     "type": "STRING",
+     "widget": {
+      "name": "path"
+     },
+     "link": null,
+     "localized_name": "path"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "links": [
+      1
+     ]
+    },
+    {
+     "name": "filenames",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarLoadImagesFromFolder"
+   },
+   "widgets_values": [
+    "D:\\EXAMPLE\\sprites"
+   ],
+   "widgets_values_named": {
+    "path": "D:\\EXAMPLE\\sprites"
+   }
+  },
+  {
+   "id": 2,
+   "type": "JarJarPixelate",
+   "pos": [
+    400,
+    60
+   ],
+   "size": [
+    320,
+    216
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": 1,
+     "localized_name": "image"
+    },
+    {
+     "name": "pixel_size",
+     "type": "INT",
+     "widget": {
+      "name": "pixel_size"
+     },
+     "link": null,
+     "localized_name": "pixel_size"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": [
+      2
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarPixelate"
+   },
+   "widgets_values": [
+    8
+   ],
+   "widgets_values_named": {
+    "pixel_size": 8
+   }
+  },
+  {
+   "id": 3,
+   "type": "JarJarPaletteReduce",
+   "pos": [
+    760,
+    60
+   ],
+   "size": [
+    320,
+    280
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": 2,
+     "localized_name": "image"
+    },
+    {
+     "name": "num_colors",
+     "type": "INT",
+     "widget": {
+      "name": "num_colors"
+     },
+     "link": null,
+     "localized_name": "num_colors"
+    },
+    {
+     "name": "dither",
+     "type": "COMBO",
+     "widget": {
+      "name": "dither"
+     },
+     "link": null,
+     "localized_name": "dither"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": [
+      3
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarPaletteReduce"
+   },
+   "widgets_values": [
+    16,
+    "none"
+   ],
+   "widgets_values_named": {
+    "num_colors": 16,
+    "dither": "none"
+   }
+  },
+  {
+   "id": 4,
+   "type": "JarJarOutline",
+   "pos": [
+    1120,
+    60
+   ],
+   "size": [
+    320,
+    216
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": 3,
+     "localized_name": "image"
+    },
+    {
+     "name": "outline_width",
+     "type": "INT",
+     "widget": {
+      "name": "outline_width"
+     },
+     "link": null,
+     "localized_name": "outline_width"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": [
+      4
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarOutline"
+   },
+   "widgets_values": [
+    2
+   ],
+   "widgets_values_named": {
+    "outline_width": 2
+   }
+  },
+  {
+   "id": 5,
+   "type": "JarJarShadow",
+   "pos": [
+    1480,
+    60
+   ],
+   "size": [
+    340,
+    536
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": 4,
+     "localized_name": "image"
+    },
+    {
+     "name": "angle",
+     "type": "FLOAT",
+     "widget": {
+      "name": "angle"
+     },
+     "link": null,
+     "localized_name": "angle"
+    },
+    {
+     "name": "distance",
+     "type": "INT",
+     "widget": {
+      "name": "distance"
+     },
+     "link": null,
+     "localized_name": "distance"
+    },
+    {
+     "name": "shadow_color",
+     "type": "FLOAT",
+     "widget": {
+      "name": "shadow_color"
+     },
+     "link": null,
+     "localized_name": "shadow_color"
+    },
+    {
+     "name": "shadow_opacity",
+     "type": "FLOAT",
+     "widget": {
+      "name": "shadow_opacity"
+     },
+     "link": null,
+     "localized_name": "shadow_opacity"
+    },
+    {
+     "name": "skew",
+     "type": "FLOAT",
+     "widget": {
+      "name": "skew"
+     },
+     "link": null,
+     "localized_name": "skew"
+    },
+    {
+     "name": "stretch",
+     "type": "FLOAT",
+     "widget": {
+      "name": "stretch"
+     },
+     "link": null,
+     "localized_name": "stretch"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": [
+      5
+     ]
+    },
+    {
+     "name": "shadow",
+     "type": "IMAGE",
+     "links": [
+      6
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarShadow"
+   },
+   "widgets_values": [
+    135.0,
+    6,
+    0.0,
+    0.5,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "id": 6,
+   "type": "JarJarSaveImage",
+   "pos": [
+    1900,
+    40
+   ],
+   "size": [
+    320,
+    216
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": 5,
+     "localized_name": "image"
+    },
+    {
+     "name": "filenames",
+     "type": "STRING",
+     "widget": {
+      "name": "filenames"
+     },
+     "link": null,
+     "localized_name": "filenames"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "save_path",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarSaveImage"
+   },
+   "widgets_values": [
+    "EXAMPLE_sprite_fx"
+   ],
+   "widgets_values_named": {
+    "filenames": "EXAMPLE_sprite_fx"
+   }
+  },
+  {
+   "id": 7,
+   "type": "PreviewImage",
+   "pos": [
+    1900,
+    300
+   ],
+   "size": [
+    320,
+    152
+   ],
+   "flags": {},
+   "order": 6,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 6,
+     "localized_name": "images"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "PreviewImage"
+   },
+   "widgets_values": []
+  }
+ ],
+ "links": [
+  [
+   1,
+   1,
+   0,
+   2,
+   0,
+   "IMAGE"
+  ],
+  [
+   2,
+   2,
+   0,
+   3,
+   0,
+   "IMAGE"
+  ],
+  [
+   3,
+   3,
+   0,
+   4,
+   0,
+   "IMAGE"
+  ],
+  [
+   4,
+   4,
+   0,
+   5,
+   0,
+   "IMAGE"
+  ],
+  [
+   5,
+   5,
+   0,
+   6,
+   0,
+   "IMAGE"
+  ],
+  [
+   6,
+   5,
+   1,
+   7,
+   0,
+   "IMAGE"
+  ]
+ ],
+ "groups": [],
+ "extra": {
+  "ds": {
+   "scale": 1.0,
+   "offset": [
+    0,
+    0
+   ]
+  }
+ },
+ "version": 0.4
+}

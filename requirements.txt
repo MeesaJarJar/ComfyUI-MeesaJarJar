@@ -1,0 +1,14 @@
+torch
+numpy
+Pillow
+torchaudio
+trimesh
+plyfile
+scipy
+scikit-image
+matplotlib
+# optional:
+pixeloe  # for JarJarPixelizeImage
+pymeshlab  # for splat Poisson meshing + decimation
+xatlas  # for splat texture bake
+open3d  # for textured splat transfer in JarJarLoadMesh

@@ -1,0 +1,25 @@
+[project]
+name = "comfyui-meesajarjar"
+description = "Unified JarJar node suite: audio, image, mesh, splat, rig, segment."
+version = "2.0.0"
+readme = "README.md"
+license = { file = "LICENSE" }
+dependencies = [
+  "torch",
+  "numpy",
+  "Pillow",
+  "torchaudio",
+  "trimesh",
+  "plyfile",
+  "scipy",
+  "scikit-image",
+  "matplotlib",
+]
+
+[project.urls]
+Repository = "https://github.com/MeesaJarJar/ComfyUI-MeesaJarJar"
+
+[tool.comfy]
+PublisherId = "meesa"
+DisplayName = "ComfyUI-MeesaJarJar"
+Icon = ""
