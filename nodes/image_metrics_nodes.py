@@ -23,7 +23,7 @@ class JarJarCompareImages(IO.ComfyNode):
         return IO.Schema(
             node_id="JarJarCompareImages",
             display_name="JarJar: Compare Images (PSNR/SSIM)",
-            category="JarJar/3D",
+            category="JarJar/Image",
             description="Compare two images and report PSNR, SSIM and MSE. Use after Render Splat to score "
                         "a splat's reconstruction against the source image.",
             inputs=[

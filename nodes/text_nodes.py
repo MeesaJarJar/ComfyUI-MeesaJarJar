@@ -1,6 +1,9 @@
 """MeesaJarJar text node - extracted from JarJarSaveText.py (Old pack)."""
 
+import logging
 import os
+
+log = logging.getLogger("jarjar")
 
 
 class JarJarSaveText:
@@ -41,12 +44,12 @@ class JarJarSaveText:
                 f.write(text_content)
 
             status = f"Successfully saved text to {filepath}"
-            print(status)
+            log.info("%s", status)
             return (status,)
 
         except OSError as e:
             error_msg = f"Error saving file: {str(e)}"
-            print(error_msg)
+            log.info("%s", error_msg)
             return (error_msg,)
 
 

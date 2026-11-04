@@ -3,10 +3,25 @@
 - JarJarUVUnwrap.py (was NOT wired in Old __init__.py, now included)
 """
 
+import logging
 import os
+import shutil
 import subprocess
 import tempfile
 from pathlib import Path
+
+log = logging.getLogger("jarjar")
+
+
+def _resolve_blender_path(explicit=""):
+    # Blender 4.4+ tested. Resolve at runtime, never hardcode an install path.
+    explicit = (explicit or "").strip()
+    if explicit:
+        return explicit
+    env_path = os.environ.get("BLENDER_PATH", "").strip()
+    if env_path:
+        return env_path
+    return shutil.which("blender") or ""
 
 
 class JarJarSaveGLB:
@@ -41,21 +56,21 @@ class JarJarSaveGLB:
             mesh.export(str(save_path), file_type='glb')
 
             success_message = f"Mesh saved successfully to: {save_path}"
-            print(success_message)
+            log.info("%s", success_message)
 
             return (success_message,)
 
         except (AttributeError, TypeError):
             error_msg = "Error: Input is not a valid mesh object. Expected trimesh output."
-            print(error_msg)
+            log.warning("%s", error_msg)
             return (error_msg,)
         except (OSError, ValueError, RuntimeError) as e:
             error_msg = f"Error saving mesh: {str(e)}"
-            print(error_msg)
+            log.warning("%s", error_msg)
             return (error_msg,)
         except Exception as e:
             error_msg = f"Error saving mesh: {str(e)}"
-            print(error_msg)
+            log.exception("Error saving mesh")
             return (error_msg,)
 
 
@@ -63,7 +78,8 @@ class JarJarUVUnwrap:
     """UV-unwrap TRIMESH via Blender Smart UV Project (background mode)."""
 
     def __init__(self):
-        self.blender_path = r"C:\Program Files\Blender Foundation\Blender 4.4\blender.exe"
+        # Blender 4.4+ tested; resolved at runtime via _resolve_blender_path().
+        self.blender_path = ""
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -74,7 +90,7 @@ class JarJarUVUnwrap:
                 "filename": ("STRING", {"default": "unwrapped_mesh.glb", "multiline": False}),
             },
             "optional": {
-                "blender_path": ("STRING", {"default": r"C:\Program Files\Blender Foundation\Blender 4.4\blender.exe", "multiline": False}),
+                "blender_path": ("STRING", {"default": "", "multiline": False}),
                 "angle_limit": ("FLOAT", {"default": 66.0, "min": 1.0, "max": 89.0, "step": 1.0}),
                 "island_margin": ("FLOAT", {"default": 0.02, "min": 0.0, "max": 1.0, "step": 0.01}),
             }
@@ -90,12 +106,13 @@ class JarJarUVUnwrap:
                   blender_path: str = None, angle_limit: float = 66.0,
                   island_margin: float = 0.02):
         try:
-            if blender_path:
-                self.blender_path = blender_path
+            resolved = _resolve_blender_path(blender_path)
+            if resolved:
+                self.blender_path = resolved
 
-            if not os.path.exists(self.blender_path):
-                error_msg = f"Error: Blender not found at: {self.blender_path}"
-                print(error_msg)
+            if not self.blender_path or not os.path.exists(self.blender_path):
+                error_msg = f"Error: Blender not found: '{self.blender_path}'. Set BLENDER_PATH or install Blender."
+                log.warning("%s", error_msg)
                 return (error_msg,)
 
             output_path = Path(output_folder)
@@ -110,7 +127,7 @@ class JarJarUVUnwrap:
                 temp_input_path = tmp_input.name
 
             trimesh.export(temp_input_path, file_type='glb')
-            print(f"Saved temporary input mesh to: {temp_input_path}")
+            log.info("Saved temporary input mesh to: %s", temp_input_path)
 
             blender_script = f"""
 import bpy
@@ -177,9 +194,8 @@ except Exception as e:
                 tmp_script.write(blender_script)
                 script_path = tmp_script.name
 
-            print("Starting Blender UV unwrap process...")
-            print(f"Input: {temp_input_path}")
-            print(f"Output: {output_file}")
+            log.info("Starting Blender UV unwrap process... Input: %s Output: %s",
+                     temp_input_path, output_file)
 
             result = subprocess.run(
                 [self.blender_path, "--background", "--python", script_path],
@@ -191,36 +207,31 @@ except Exception as e:
             try:
                 os.remove(temp_input_path)
                 os.remove(script_path)
-            except Exception:
+            except OSError:
                 pass
 
             if os.path.exists(output_file):
                 file_size = os.path.getsize(output_file)
                 success_msg = f"UV unwrapped mesh saved to: {output_file} ({file_size:,} bytes)"
-                print(success_msg)
-                print("\n--- Blender Output ---")
-                print(result.stdout)
+                log.info("%s", success_msg)
+                log.info("--- Blender Output ---\n%s", result.stdout)
                 return (str(output_file),)
             else:
                 error_msg = f"Error: Output file was not created.\n\nBlender output:\n{result.stdout}\n\nBlender errors:\n{result.stderr}"
-                print(error_msg)
+                log.warning("%s", error_msg)
                 return (error_msg,)
 
         except (AttributeError, TypeError):
             error_msg = "Error: Input is not a valid trimesh object. Expected TRIMESH output."
-            print(error_msg)
+            log.warning("%s", error_msg)
             return (error_msg,)
         except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as e:
             error_msg = f"Error during UV unwrapping: {str(e)}"
-            print(error_msg)
-            import traceback
-            traceback.print_exc()
+            log.exception("Error during UV unwrapping")
             return (error_msg,)
         except Exception as e:
             error_msg = f"Error during UV unwrapping: {str(e)}"
-            print(error_msg)
-            import traceback
-            traceback.print_exc()
+            log.exception("Error during UV unwrapping")
             return (error_msg,)
 
 

@@ -5,14 +5,17 @@
 - jarjar_save_image.py (JarJarSaveImage)
 """
 
+import logging
 import os
 
 import numpy as np
 import torch
 from PIL import Image, ImageOps
 
+log = logging.getLogger("jarjar")
 
-class LoadImageByIndex:
+
+class JarJarLoadImageByIndex:
     """Load a single image from a directory by sorted index."""
 
     @classmethod
@@ -65,7 +68,7 @@ class JarJarLoadImageFolder:
         return {
             "required": {
                 "directory": ("STRING", {
-                    "default": "C:\\Users\\SERVER\\Desktop\\NNImag",
+                    "default": "",
                     "multiline": False,
                 }),
                 "image_load_cap": ("INT", {
@@ -126,7 +129,7 @@ class JarJarLoadImageFolder:
                     images.append(torch.from_numpy(img_array))
                     file_paths.append(image_path)
                 except (OSError, ValueError) as e:
-                    print(f"Error loading image {image_path}: {str(e)}")
+                    log.info("Error loading image %s: %s", image_path, e)
                     continue
 
             if not images:
@@ -135,12 +138,12 @@ class JarJarLoadImageFolder:
             image_tensor = torch.stack(images, dim=0)
             file_path_str = ";".join(file_paths)
 
-            print(f"Loaded {len(images)} images from {directory}")
+            log.info("Loaded %d images from %s", len(images), directory)
             return (image_tensor, file_path_str)
 
         except (OSError, ValueError, RuntimeError) as e:
             error_msg = f"Error loading images: {str(e)}"
-            print(error_msg)
+            log.info("%s", error_msg)
             raise RuntimeError(error_msg)
 
 
@@ -224,7 +227,7 @@ class JarJarMeesaLoadImagesFromFolder:
                 image_filename_list.append(os.path.basename(image_path))
                 image_count += 1
             except (OSError, ValueError) as e:
-                print(f"Error loading {image_path}: {e}")
+                log.info("Error loading %s: %s", image_path, e)
                 continue
 
         if len(images) == 0:
@@ -356,14 +359,14 @@ class JarJarSaveImage:
 
 
 NODE_CLASS_MAPPINGS = {
-    "LoadImageByIndex": LoadImageByIndex,
+    "JarJarLoadImageByIndex": JarJarLoadImageByIndex,
     "JarJarLoadImageFolder": JarJarLoadImageFolder,
     "JarJarMeesaLoadImagesFromFolder": JarJarMeesaLoadImagesFromFolder,
     "JarJarSaveImage": JarJarSaveImage,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "LoadImageByIndex": "Load Image By Index",
+    "JarJarLoadImageByIndex": "JarJar Load Image By Index",
     "JarJarLoadImageFolder": "JarJar Load Image Folder",
     "JarJarMeesaLoadImagesFromFolder": "JarJar Load Images From Folder (Meesa)",
     "JarJarSaveImage": "JarJar Save Image",

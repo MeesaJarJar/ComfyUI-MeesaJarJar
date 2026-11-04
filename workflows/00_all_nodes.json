@@ -1,0 +1,4259 @@
+{
+ "last_node_id": 55,
+ "last_link_id": 0,
+ "nodes": [
+  {
+   "id": 1,
+   "type": "JarJarAudioLoadSample",
+   "pos": [
+    40,
+    60
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "folder_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "folder_path",
+     "widget": {
+      "name": "folder_path"
+     }
+    },
+    {
+     "name": "sample_index",
+     "type": "INT",
+     "link": null,
+     "localized_name": "sample_index",
+     "widget": {
+      "name": "sample_index"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "audio",
+     "type": "AUDIO",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarAudioLoadSample"
+   },
+   "widgets_values": [
+    "D:\\EXAMPLE\\folder_path",
+    1
+   ],
+   "widgets_values_named": {
+    "folder_path": "D:\\EXAMPLE\\folder_path",
+    "sample_index": 1
+   }
+  },
+  {
+   "id": 2,
+   "type": "JarJarAudioSaveAudio",
+   "pos": [
+    420,
+    60
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "file_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "file_path",
+     "widget": {
+      "name": "file_path"
+     }
+    },
+    {
+     "name": "audio",
+     "type": "AUDIO",
+     "link": null,
+     "localized_name": "audio"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "audio",
+     "type": "AUDIO",
+     "links": []
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "links": []
+    },
+    {
+     "name": "path",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarAudioSaveAudio"
+   },
+   "widgets_values": [
+    "D:\\EXAMPLE\\file_path"
+   ],
+   "widgets_values_named": {
+    "file_path": "D:\\EXAMPLE\\file_path"
+   }
+  },
+  {
+   "id": 3,
+   "type": "JarJarAutoSegmentImage",
+   "pos": [
+    800,
+    60
+   ],
+   "size": [
+    320,
+    300
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "background",
+     "type": "COMBO",
+     "link": null,
+     "localized_name": "background",
+     "widget": {
+      "name": "background"
+     }
+    },
+    {
+     "name": "threshold",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "threshold",
+     "widget": {
+      "name": "threshold"
+     }
+    },
+    {
+     "name": "min_area",
+     "type": "INT",
+     "link": null,
+     "localized_name": "min_area",
+     "widget": {
+      "name": "min_area"
+     }
+    },
+    {
+     "name": "padding",
+     "type": "INT",
+     "link": null,
+     "localized_name": "padding",
+     "widget": {
+      "name": "padding"
+     }
+    },
+    {
+     "name": "max_sprites",
+     "type": "INT",
+     "link": null,
+     "localized_name": "max_sprites",
+     "widget": {
+      "name": "max_sprites"
+     }
+    },
+    {
+     "name": "sort_order",
+     "type": "COMBO",
+     "link": null,
+     "localized_name": "sort_order",
+     "widget": {
+      "name": "sort_order"
+     }
+    },
+    {
+     "name": "feather",
+     "type": "INT",
+     "link": null,
+     "localized_name": "feather",
+     "widget": {
+      "name": "feather"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "sprites",
+     "type": "IMAGE",
+     "links": []
+    },
+    {
+     "name": "masks",
+     "type": "MASK",
+     "links": []
+    },
+    {
+     "name": "count",
+     "type": "INT",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarAutoSegmentImage"
+   },
+   "widgets_values": [
+    "auto",
+    15.0,
+    500,
+    4,
+    64,
+    "left-to-right",
+    0
+   ],
+   "widgets_values_named": {
+    "background": "auto",
+    "threshold": 15.0,
+    "min_area": 500,
+    "padding": 4,
+    "max_sprites": 64,
+    "sort_order": "left-to-right",
+    "feather": 0
+   }
+  },
+  {
+   "id": 4,
+   "type": "JarJarBrightnessContrast",
+   "pos": [
+    1180,
+    60
+   ],
+   "size": [
+    320,
+    196
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "brightness",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "brightness",
+     "widget": {
+      "name": "brightness"
+     }
+    },
+    {
+     "name": "contrast",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "contrast",
+     "widget": {
+      "name": "contrast"
+     }
+    },
+    {
+     "name": "saturation",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "saturation",
+     "widget": {
+      "name": "saturation"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarBrightnessContrast"
+   },
+   "widgets_values": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "widgets_values_named": {
+    "brightness": 0.0,
+    "contrast": 0.0,
+    "saturation": 0.0
+   }
+  },
+  {
+   "id": 5,
+   "type": "JarJarCSVFileToList",
+   "pos": [
+    1560,
+    60
+   ],
+   "size": [
+    320,
+    222
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "file_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "file_path",
+     "widget": {
+      "name": "file_path"
+     }
+    },
+    {
+     "name": "delimiter",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "delimiter",
+     "widget": {
+      "name": "delimiter"
+     }
+    },
+    {
+     "name": "column",
+     "type": "INT",
+     "link": null,
+     "localized_name": "column",
+     "widget": {
+      "name": "column"
+     }
+    },
+    {
+     "name": "has_header",
+     "type": "BOOLEAN",
+     "link": null,
+     "localized_name": "has_header",
+     "widget": {
+      "name": "has_header"
+     }
+    },
+    {
+     "name": "skip_empty",
+     "type": "BOOLEAN",
+     "link": null,
+     "localized_name": "skip_empty",
+     "widget": {
+      "name": "skip_empty"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "items",
+     "type": "LIST",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarCSVFileToList"
+   },
+   "widgets_values": [
+    "./list.csv",
+    ",",
+    0,
+    false,
+    true
+   ],
+   "widgets_values_named": {
+    "file_path": "./list.csv",
+    "delimiter": ",",
+    "column": 0,
+    "has_header": false,
+    "skip_empty": true
+   }
+  },
+  {
+   "id": 6,
+   "type": "JarJarCompareImages",
+   "pos": [
+    40,
+    400
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image_a",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image_a"
+    },
+    {
+     "name": "image_b",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image_b"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "psnr",
+     "type": "FLOAT",
+     "links": []
+    },
+    {
+     "name": "ssim",
+     "type": "FLOAT",
+     "links": []
+    },
+    {
+     "name": "mse",
+     "type": "FLOAT",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarCompareImages"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 7,
+   "type": "JarJarDither",
+   "pos": [
+    420,
+    400
+   ],
+   "size": [
+    320,
+    170
+   ],
+   "flags": {},
+   "order": 6,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "dither_type",
+     "type": "COMBO",
+     "link": null,
+     "localized_name": "dither_type",
+     "widget": {
+      "name": "dither_type"
+     }
+    },
+    {
+     "name": "strength",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "strength",
+     "widget": {
+      "name": "strength"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarDither"
+   },
+   "widgets_values": [
+    "ordered_4x4",
+    1.0
+   ],
+   "widgets_values_named": {
+    "dither_type": "ordered_4x4",
+    "strength": 1.0
+   }
+  },
+  {
+   "id": 8,
+   "type": "JarJarDownsampleSplatsTopK",
+   "pos": [
+    800,
+    400
+   ],
+   "size": [
+    320,
+    170
+   ],
+   "flags": {},
+   "order": 7,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "splat",
+     "type": "SPLAT",
+     "link": null,
+     "localized_name": "splat"
+    },
+    {
+     "name": "target_count",
+     "type": "INT",
+     "link": null,
+     "localized_name": "target_count",
+     "widget": {
+      "name": "target_count"
+     }
+    },
+    {
+     "name": "opacity_floor",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "opacity_floor",
+     "widget": {
+      "name": "opacity_floor"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "splat",
+     "type": "SPLAT",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarDownsampleSplatsTopK"
+   },
+   "widgets_values": [
+    100000,
+    0.0
+   ],
+   "widgets_values_named": {
+    "target_count": 100000,
+    "opacity_floor": 0.0
+   }
+  },
+  {
+   "id": 9,
+   "type": "JarJarDownsampleSplatsVoxel",
+   "pos": [
+    1180,
+    400
+   ],
+   "size": [
+    320,
+    170
+   ],
+   "flags": {},
+   "order": 8,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "splat",
+     "type": "SPLAT",
+     "link": null,
+     "localized_name": "splat"
+    },
+    {
+     "name": "grid",
+     "type": "INT",
+     "link": null,
+     "localized_name": "grid",
+     "widget": {
+      "name": "grid"
+     }
+    },
+    {
+     "name": "opacity_floor",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "opacity_floor",
+     "widget": {
+      "name": "opacity_floor"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "splat",
+     "type": "SPLAT",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarDownsampleSplatsVoxel"
+   },
+   "widgets_values": [
+    64,
+    0.0
+   ],
+   "widgets_values_named": {
+    "grid": 64,
+    "opacity_floor": 0.0
+   }
+  },
+  {
+   "id": 10,
+   "type": "JarJarFolderFilesByExt",
+   "pos": [
+    1560,
+    400
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 9,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "folder",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "folder",
+     "widget": {
+      "name": "folder"
+     }
+    },
+    {
+     "name": "extension",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "extension",
+     "widget": {
+      "name": "extension"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "file_paths",
+     "type": "LIST",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarFolderFilesByExt"
+   },
+   "widgets_values": [
+    "./",
+    ".ply"
+   ],
+   "widgets_values_named": {
+    "folder": "./",
+    "extension": ".ply"
+   }
+  },
+  {
+   "id": 11,
+   "type": "JarJarFrameCamera",
+   "pos": [
+    40,
+    740
+   ],
+   "size": [
+    320,
+    196
+   ],
+   "flags": {},
+   "order": 10,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "link": null,
+     "localized_name": "mesh"
+    },
+    {
+     "name": "yaw_deg",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "yaw_deg",
+     "widget": {
+      "name": "yaw_deg"
+     }
+    },
+    {
+     "name": "pitch_deg",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "pitch_deg",
+     "widget": {
+      "name": "pitch_deg"
+     }
+    },
+    {
+     "name": "distance_scale",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "distance_scale",
+     "widget": {
+      "name": "distance_scale"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "camera_info",
+     "type": "LOAD3D_CAMERA",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarFrameCamera"
+   },
+   "widgets_values": [
+    30.0,
+    20.0,
+    2.2
+   ],
+   "widgets_values_named": {
+    "yaw_deg": 30.0,
+    "pitch_deg": 20.0,
+    "distance_scale": 2.2
+   }
+  },
+  {
+   "id": 12,
+   "type": "JarJarIntToString",
+   "pos": [
+    420,
+    740
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 11,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "value",
+     "type": "INT",
+     "link": null,
+     "localized_name": "value",
+     "widget": {
+      "name": "value"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "STRING",
+     "type": "STRING",
+     "links": []
+    },
+    {
+     "name": "TEXT",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarIntToString"
+   },
+   "widgets_values": [
+    0
+   ],
+   "widgets_values_named": {
+    "value": 0
+   }
+  },
+  {
+   "id": 13,
+   "type": "JarJarListItem",
+   "pos": [
+    800,
+    740
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 12,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "list_in",
+     "type": "LIST",
+     "link": null,
+     "localized_name": "list_in"
+    },
+    {
+     "name": "index",
+     "type": "INT",
+     "link": null,
+     "localized_name": "index",
+     "widget": {
+      "name": "index"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "item",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarListItem"
+   },
+   "widgets_values": [
+    0
+   ],
+   "widgets_values_named": {
+    "index": 0
+   }
+  },
+  {
+   "id": 14,
+   "type": "JarJarLoadImageFolder",
+   "pos": [
+    1180,
+    740
+   ],
+   "size": [
+    320,
+    222
+   ],
+   "flags": {},
+   "order": 13,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "directory",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "directory",
+     "widget": {
+      "name": "directory"
+     }
+    },
+    {
+     "name": "image_load_cap",
+     "type": "INT",
+     "link": null,
+     "localized_name": "image_load_cap",
+     "widget": {
+      "name": "image_load_cap"
+     }
+    },
+    {
+     "name": "start_index",
+     "type": "INT",
+     "link": null,
+     "localized_name": "start_index",
+     "widget": {
+      "name": "start_index"
+     }
+    },
+    {
+     "name": "load_always",
+     "type": "COMBO",
+     "link": null,
+     "localized_name": "load_always",
+     "widget": {
+      "name": "load_always"
+     }
+    },
+    {
+     "name": "auto_increment",
+     "type": "COMBO",
+     "link": null,
+     "localized_name": "auto_increment",
+     "widget": {
+      "name": "auto_increment"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "links": []
+    },
+    {
+     "name": "FILE_PATH",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarLoadImageFolder"
+   },
+   "widgets_values": [
+    "D:\\EXAMPLE\\directory",
+    0,
+    0,
+    "enabled",
+    "enabled"
+   ],
+   "widgets_values_named": {
+    "directory": "D:\\EXAMPLE\\directory",
+    "image_load_cap": 0,
+    "start_index": 0,
+    "load_always": "enabled",
+    "auto_increment": "enabled"
+   }
+  },
+  {
+   "id": 15,
+   "type": "JarJarLoadImagesFromFolder",
+   "pos": [
+    1560,
+    740
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 14,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "path",
+     "widget": {
+      "name": "path"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "links": []
+    },
+    {
+     "name": "filenames",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarLoadImagesFromFolder"
+   },
+   "widgets_values": [
+    ""
+   ],
+   "widgets_values_named": {
+    "path": ""
+   }
+  },
+  {
+   "id": 16,
+   "type": "JarJarLoadMesh",
+   "pos": [
+    40,
+    1080
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 15,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "file_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "file_path",
+     "widget": {
+      "name": "file_path"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarLoadMesh"
+   },
+   "widgets_values": [
+    ""
+   ],
+   "widgets_values_named": {
+    "file_path": ""
+   }
+  },
+  {
+   "id": 17,
+   "type": "JarJarLoadSplatPly",
+   "pos": [
+    420,
+    1080
+   ],
+   "size": [
+    320,
+    274
+   ],
+   "flags": {},
+   "order": 16,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "file_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "file_path",
+     "widget": {
+      "name": "file_path"
+     }
+    },
+    {
+     "name": "opacity_cutoff",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "opacity_cutoff",
+     "widget": {
+      "name": "opacity_cutoff"
+     }
+    },
+    {
+     "name": "poisson_depth",
+     "type": "INT",
+     "link": null,
+     "localized_name": "poisson_depth",
+     "widget": {
+      "name": "poisson_depth"
+     }
+    },
+    {
+     "name": "max_points",
+     "type": "INT",
+     "link": null,
+     "localized_name": "max_points",
+     "widget": {
+      "name": "max_points"
+     }
+    },
+    {
+     "name": "rotate_x",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "rotate_x",
+     "widget": {
+      "name": "rotate_x"
+     }
+    },
+    {
+     "name": "rotate_y",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "rotate_y",
+     "widget": {
+      "name": "rotate_y"
+     }
+    },
+    {
+     "name": "rotate_z",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "rotate_z",
+     "widget": {
+      "name": "rotate_z"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarLoadSplatPly"
+   },
+   "widgets_values": [
+    "",
+    0.05,
+    9,
+    100000,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "widgets_values_named": {
+    "file_path": "",
+    "opacity_cutoff": 0.05,
+    "poisson_depth": 9,
+    "max_points": 100000,
+    "rotate_x": 0.0,
+    "rotate_y": 0.0,
+    "rotate_z": 0.0
+   }
+  },
+  {
+   "id": 18,
+   "type": "JarJarMakeShadow",
+   "pos": [
+    800,
+    1080
+   ],
+   "size": [
+    320,
+    274
+   ],
+   "flags": {},
+   "order": 17,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "angle_deg",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "angle_deg",
+     "widget": {
+      "name": "angle_deg"
+     }
+    },
+    {
+     "name": "vertical_scale",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "vertical_scale",
+     "widget": {
+      "name": "vertical_scale"
+     }
+    },
+    {
+     "name": "offset_x",
+     "type": "INT",
+     "link": null,
+     "localized_name": "offset_x",
+     "widget": {
+      "name": "offset_x"
+     }
+    },
+    {
+     "name": "offset_y",
+     "type": "INT",
+     "link": null,
+     "localized_name": "offset_y",
+     "widget": {
+      "name": "offset_y"
+     }
+    },
+    {
+     "name": "blur_radius",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "blur_radius",
+     "widget": {
+      "name": "blur_radius"
+     }
+    },
+    {
+     "name": "shadow_opacity",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "shadow_opacity",
+     "widget": {
+      "name": "shadow_opacity"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "cropped_image",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarMakeShadow"
+   },
+   "widgets_values": [
+    30.0,
+    0.5,
+    0,
+    50,
+    5.0,
+    0.6
+   ],
+   "widgets_values_named": {
+    "angle_deg": 30.0,
+    "vertical_scale": 0.5,
+    "offset_x": 0,
+    "offset_y": 50,
+    "blur_radius": 5.0,
+    "shadow_opacity": 0.6
+   }
+  },
+  {
+   "id": 19,
+   "type": "JarJarMeesaLoadImagesFromFolder",
+   "pos": [
+    1180,
+    1080
+   ],
+   "size": [
+    320,
+    170
+   ],
+   "flags": {},
+   "order": 18,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "folder",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "folder",
+     "widget": {
+      "name": "folder"
+     }
+    },
+    {
+     "name": "image_load_cap",
+     "type": "INT",
+     "link": null,
+     "localized_name": "image_load_cap",
+     "widget": {
+      "name": "image_load_cap"
+     }
+    },
+    {
+     "name": "start_index",
+     "type": "INT",
+     "link": null,
+     "localized_name": "start_index",
+     "widget": {
+      "name": "start_index"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": []
+    },
+    {
+     "name": "mask",
+     "type": "MASK",
+     "links": []
+    },
+    {
+     "name": "count",
+     "type": "INT",
+     "links": []
+    },
+    {
+     "name": "image_path",
+     "type": "STRING",
+     "links": []
+    },
+    {
+     "name": "image_filename",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarMeesaLoadImagesFromFolder"
+   },
+   "widgets_values": [
+    "",
+    0,
+    0
+   ],
+   "widgets_values_named": {
+    "folder": "",
+    "image_load_cap": 0,
+    "start_index": 0
+   }
+  },
+  {
+   "id": 20,
+   "type": "JarJarOrientMesh",
+   "pos": [
+    1560,
+    1080
+   ],
+   "size": [
+    320,
+    196
+   ],
+   "flags": {},
+   "order": 19,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "link": null,
+     "localized_name": "mesh"
+    },
+    {
+     "name": "rotate_x",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "rotate_x",
+     "widget": {
+      "name": "rotate_x"
+     }
+    },
+    {
+     "name": "rotate_y",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "rotate_y",
+     "widget": {
+      "name": "rotate_y"
+     }
+    },
+    {
+     "name": "rotate_z",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "rotate_z",
+     "widget": {
+      "name": "rotate_z"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarOrientMesh"
+   },
+   "widgets_values": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "widgets_values_named": {
+    "rotate_x": 0.0,
+    "rotate_y": 0.0,
+    "rotate_z": 0.0
+   }
+  },
+  {
+   "id": 21,
+   "type": "JarJarOutline",
+   "pos": [
+    40,
+    1420
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 20,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "outline_width",
+     "type": "INT",
+     "link": null,
+     "localized_name": "outline_width",
+     "widget": {
+      "name": "outline_width"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarOutline"
+   },
+   "widgets_values": [
+    1
+   ],
+   "widgets_values_named": {
+    "outline_width": 1
+   }
+  },
+  {
+   "id": 22,
+   "type": "JarJarPaletteReduce",
+   "pos": [
+    420,
+    1420
+   ],
+   "size": [
+    320,
+    170
+   ],
+   "flags": {},
+   "order": 21,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "num_colors",
+     "type": "INT",
+     "link": null,
+     "localized_name": "num_colors",
+     "widget": {
+      "name": "num_colors"
+     }
+    },
+    {
+     "name": "dither",
+     "type": "COMBO",
+     "link": null,
+     "localized_name": "dither",
+     "widget": {
+      "name": "dither"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarPaletteReduce"
+   },
+   "widgets_values": [
+    32,
+    "none"
+   ],
+   "widgets_values_named": {
+    "num_colors": 32,
+    "dither": "none"
+   }
+  },
+  {
+   "id": 23,
+   "type": "JarJarPixelate",
+   "pos": [
+    800,
+    1420
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 22,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "pixel_size",
+     "type": "INT",
+     "link": null,
+     "localized_name": "pixel_size",
+     "widget": {
+      "name": "pixel_size"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarPixelate"
+   },
+   "widgets_values": [
+    8
+   ],
+   "widgets_values_named": {
+    "pixel_size": 8
+   }
+  },
+  {
+   "id": 24,
+   "type": "JarJarPixelizeImage",
+   "pos": [
+    1180,
+    1420
+   ],
+   "size": [
+    320,
+    326
+   ],
+   "flags": {},
+   "order": 23,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "target_size",
+     "type": "INT",
+     "link": null,
+     "localized_name": "target_size",
+     "widget": {
+      "name": "target_size"
+     }
+    },
+    {
+     "name": "palette",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "palette",
+     "widget": {
+      "name": "palette"
+     }
+    },
+    {
+     "name": "dither",
+     "type": "BOOLEAN",
+     "link": null,
+     "localized_name": "dither",
+     "widget": {
+      "name": "dither"
+     }
+    },
+    {
+     "name": "outline",
+     "type": "BOOLEAN",
+     "link": null,
+     "localized_name": "outline",
+     "widget": {
+      "name": "outline"
+     }
+    },
+    {
+     "name": "bg_transparent",
+     "type": "BOOLEAN",
+     "link": null,
+     "localized_name": "bg_transparent",
+     "widget": {
+      "name": "bg_transparent"
+     }
+    },
+    {
+     "name": "contrast",
+     "type": "INT",
+     "link": null,
+     "localized_name": "contrast",
+     "widget": {
+      "name": "contrast"
+     }
+    },
+    {
+     "name": "upscale",
+     "type": "INT",
+     "link": null,
+     "localized_name": "upscale",
+     "widget": {
+      "name": "upscale"
+     }
+    },
+    {
+     "name": "preview_steps",
+     "type": "BOOLEAN",
+     "link": null,
+     "localized_name": "preview_steps",
+     "widget": {
+      "name": "preview_steps"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "pixelized_image",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarPixelizeImage"
+   },
+   "widgets_values": [
+    32,
+    "UO Default",
+    false,
+    false,
+    true,
+    0,
+    1,
+    true
+   ],
+   "widgets_values_named": {
+    "target_size": 32,
+    "palette": "UO Default",
+    "dither": false,
+    "outline": false,
+    "bg_transparent": true,
+    "contrast": 0,
+    "upscale": 1,
+    "preview_steps": true
+   }
+  },
+  {
+   "id": 25,
+   "type": "JarJarPreviewMesh",
+   "pos": [
+    1560,
+    1420
+   ],
+   "size": [
+    320,
+    274
+   ],
+   "flags": {},
+   "order": 24,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "width",
+     "type": "INT",
+     "link": null,
+     "localized_name": "width",
+     "widget": {
+      "name": "width"
+     }
+    },
+    {
+     "name": "height",
+     "type": "INT",
+     "link": null,
+     "localized_name": "height",
+     "widget": {
+      "name": "height"
+     }
+    },
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "link": null,
+     "localized_name": "mesh"
+    },
+    {
+     "name": "viewport_state",
+     "type": "LOAD_3D",
+     "link": null,
+     "localized_name": "viewport_state"
+    },
+    {
+     "name": "model_3d_info",
+     "type": "LOAD3D_MODEL_INFO",
+     "link": null,
+     "localized_name": "model_3d_info"
+    },
+    {
+     "name": "camera_info",
+     "type": "LOAD3D_CAMERA",
+     "link": null,
+     "localized_name": "camera_info"
+    },
+    {
+     "name": "mesh_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "mesh_path",
+     "widget": {
+      "name": "mesh_path"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "links": []
+    },
+    {
+     "name": "model_3d_info",
+     "type": "LOAD3D_MODEL_INFO",
+     "links": []
+    },
+    {
+     "name": "camera_info",
+     "type": "LOAD3D_CAMERA",
+     "links": []
+    },
+    {
+     "name": "width",
+     "type": "INT",
+     "links": []
+    },
+    {
+     "name": "height",
+     "type": "INT",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarPreviewMesh"
+   },
+   "widgets_values": [
+    1024,
+    1024,
+    ""
+   ],
+   "widgets_values_named": {
+    "width": 1024,
+    "height": 1024,
+    "mesh_path": ""
+   }
+  },
+  {
+   "id": 26,
+   "type": "JarJarPreviewMeshImage",
+   "pos": [
+    40,
+    1760
+   ],
+   "size": [
+    320,
+    196
+   ],
+   "flags": {},
+   "order": 25,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "link": null,
+     "localized_name": "mesh"
+    },
+    {
+     "name": "view",
+     "type": "COMBO",
+     "link": null,
+     "localized_name": "view",
+     "widget": {
+      "name": "view"
+     }
+    },
+    {
+     "name": "size",
+     "type": "INT",
+     "link": null,
+     "localized_name": "size",
+     "widget": {
+      "name": "size"
+     }
+    },
+    {
+     "name": "background",
+     "type": "COMBO",
+     "link": null,
+     "localized_name": "background",
+     "widget": {
+      "name": "background"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarPreviewMeshImage"
+   },
+   "widgets_values": [
+    "all",
+    512,
+    "dark"
+   ],
+   "widgets_values_named": {
+    "view": "all",
+    "size": 512,
+    "background": "dark"
+   }
+  },
+  {
+   "id": 27,
+   "type": "JarJarPreviewSplatPly",
+   "pos": [
+    420,
+    1760
+   ],
+   "size": [
+    320,
+    248
+   ],
+   "flags": {},
+   "order": 26,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "width",
+     "type": "INT",
+     "link": null,
+     "localized_name": "width",
+     "widget": {
+      "name": "width"
+     }
+    },
+    {
+     "name": "height",
+     "type": "INT",
+     "link": null,
+     "localized_name": "height",
+     "widget": {
+      "name": "height"
+     }
+    },
+    {
+     "name": "viewport_state",
+     "type": "LOAD_3D",
+     "link": null,
+     "localized_name": "viewport_state"
+    },
+    {
+     "name": "model_3d_info",
+     "type": "LOAD3D_MODEL_INFO",
+     "link": null,
+     "localized_name": "model_3d_info"
+    },
+    {
+     "name": "camera_info",
+     "type": "LOAD3D_CAMERA",
+     "link": null,
+     "localized_name": "camera_info"
+    },
+    {
+     "name": "ply_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "ply_path",
+     "widget": {
+      "name": "ply_path"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "model_3d",
+     "type": "FILE_3D_SPLAT_ANY",
+     "links": []
+    },
+    {
+     "name": "model_3d_info",
+     "type": "LOAD3D_MODEL_INFO",
+     "links": []
+    },
+    {
+     "name": "camera_info",
+     "type": "LOAD3D_CAMERA",
+     "links": []
+    },
+    {
+     "name": "width",
+     "type": "INT",
+     "links": []
+    },
+    {
+     "name": "height",
+     "type": "INT",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarPreviewSplatPly"
+   },
+   "widgets_values": [
+    1024,
+    1024,
+    ""
+   ],
+   "widgets_values_named": {
+    "width": 1024,
+    "height": 1024,
+    "ply_path": ""
+   }
+  },
+  {
+   "id": 28,
+   "type": "JarJarRangeIntLarge",
+   "pos": [
+    800,
+    1760
+   ],
+   "size": [
+    320,
+    170
+   ],
+   "flags": {},
+   "order": 27,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "start",
+     "type": "INT",
+     "link": null,
+     "localized_name": "start",
+     "widget": {
+      "name": "start"
+     }
+    },
+    {
+     "name": "end",
+     "type": "INT",
+     "link": null,
+     "localized_name": "end",
+     "widget": {
+      "name": "end"
+     }
+    },
+    {
+     "name": "step",
+     "type": "INT",
+     "link": null,
+     "localized_name": "step",
+     "widget": {
+      "name": "step"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "ints",
+     "type": "LIST",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarRangeIntLarge"
+   },
+   "widgets_values": [
+    0,
+    10,
+    1
+   ],
+   "widgets_values_named": {
+    "start": 0,
+    "end": 10,
+    "step": 1
+   }
+  },
+  {
+   "id": 29,
+   "type": "JarJarRemoveBackground",
+   "pos": [
+    1180,
+    1760
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 28,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "threshold",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "threshold",
+     "widget": {
+      "name": "threshold"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarRemoveBackground"
+   },
+   "widgets_values": [
+    0.1
+   ],
+   "widgets_values_named": {
+    "threshold": 0.1
+   }
+  },
+  {
+   "id": 30,
+   "type": "JarJarResizeImage",
+   "pos": [
+    1560,
+    1760
+   ],
+   "size": [
+    320,
+    196
+   ],
+   "flags": {},
+   "order": 29,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "width",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "width",
+     "widget": {
+      "name": "width"
+     }
+    },
+    {
+     "name": "height",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "height",
+     "widget": {
+      "name": "height"
+     }
+    },
+    {
+     "name": "mask",
+     "type": "MASK",
+     "link": null,
+     "localized_name": "mask"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": []
+    },
+    {
+     "name": "mask",
+     "type": "MASK",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarResizeImage"
+   },
+   "widgets_values": [
+    "512",
+    "512"
+   ],
+   "widgets_values_named": {
+    "width": "512",
+    "height": "512"
+   }
+  },
+  {
+   "id": 31,
+   "type": "JarJarSaveGLB",
+   "pos": [
+    40,
+    2100
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 30,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "mesh",
+     "type": "MESH",
+     "link": null,
+     "localized_name": "mesh"
+    },
+    {
+     "name": "file_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "file_path",
+     "widget": {
+      "name": "file_path"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "status_message",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarSaveGLB"
+   },
+   "widgets_values": [
+    "./output/mesh.glb"
+   ],
+   "widgets_values_named": {
+    "file_path": "./output/mesh.glb"
+   }
+  },
+  {
+   "id": 32,
+   "type": "JarJarSaveImage",
+   "pos": [
+    420,
+    2100
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 31,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "filenames",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "filenames",
+     "widget": {
+      "name": "filenames"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "save_path",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarSaveImage"
+   },
+   "widgets_values": [
+    "output/test.png"
+   ],
+   "widgets_values_named": {
+    "filenames": "output/test.png"
+   }
+  },
+  {
+   "id": 33,
+   "type": "JarJarSaveText",
+   "pos": [
+    800,
+    2100
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 32,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "filepath",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "filepath",
+     "widget": {
+      "name": "filepath"
+     }
+    },
+    {
+     "name": "text_content",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "text_content",
+     "widget": {
+      "name": "text_content"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "status",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarSaveText"
+   },
+   "widgets_values": [
+    "/tmp/output.txt",
+    "Hello, JarJar!"
+   ],
+   "widgets_values_named": {
+    "filepath": "/tmp/output.txt",
+    "text_content": "Hello, JarJar!"
+   }
+  },
+  {
+   "id": 34,
+   "type": "JarJarShadow",
+   "pos": [
+    1180,
+    2100
+   ],
+   "size": [
+    320,
+    274
+   ],
+   "flags": {},
+   "order": 33,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "angle",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "angle",
+     "widget": {
+      "name": "angle"
+     }
+    },
+    {
+     "name": "distance",
+     "type": "INT",
+     "link": null,
+     "localized_name": "distance",
+     "widget": {
+      "name": "distance"
+     }
+    },
+    {
+     "name": "shadow_color",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "shadow_color",
+     "widget": {
+      "name": "shadow_color"
+     }
+    },
+    {
+     "name": "shadow_opacity",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "shadow_opacity",
+     "widget": {
+      "name": "shadow_opacity"
+     }
+    },
+    {
+     "name": "skew",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "skew",
+     "widget": {
+      "name": "skew"
+     }
+    },
+    {
+     "name": "stretch",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "stretch",
+     "widget": {
+      "name": "stretch"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": []
+    },
+    {
+     "name": "shadow",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarShadow"
+   },
+   "widgets_values": [
+    135.0,
+    4,
+    0.0,
+    0.5,
+    0.0,
+    1.0
+   ],
+   "widgets_values_named": {
+    "angle": 135.0,
+    "distance": 4,
+    "shadow_color": 0.0,
+    "shadow_opacity": 0.5,
+    "skew": 0.0,
+    "stretch": 1.0
+   }
+  },
+  {
+   "id": 35,
+   "type": "JarJarSplatAnchorTexture",
+   "pos": [
+    1560,
+    2100
+   ],
+   "size": [
+    320,
+    300
+   ],
+   "flags": {},
+   "order": 34,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "file_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "file_path",
+     "widget": {
+      "name": "file_path"
+     }
+    },
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "yaw_deg",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "yaw_deg",
+     "widget": {
+      "name": "yaw_deg"
+     }
+    },
+    {
+     "name": "pitch_deg",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "pitch_deg",
+     "widget": {
+      "name": "pitch_deg"
+     }
+    },
+    {
+     "name": "fov_deg",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "fov_deg",
+     "widget": {
+      "name": "fov_deg"
+     }
+    },
+    {
+     "name": "edge_feather",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "edge_feather",
+     "widget": {
+      "name": "edge_feather"
+     }
+    },
+    {
+     "name": "recolor_strength",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "recolor_strength",
+     "widget": {
+      "name": "recolor_strength"
+     }
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "filename",
+     "widget": {
+      "name": "filename"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "filepath",
+     "type": "STRING",
+     "links": []
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "links": []
+    },
+    {
+     "name": "model_3d",
+     "type": "FILE_3D_SPLAT_ANY",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarSplatAnchorTexture"
+   },
+   "widgets_values": [
+    "",
+    0.0,
+    15.0,
+    40.0,
+    0.15,
+    1.0,
+    ""
+   ],
+   "widgets_values_named": {
+    "file_path": "",
+    "yaw_deg": 0.0,
+    "pitch_deg": 15.0,
+    "fov_deg": 40.0,
+    "edge_feather": 0.15,
+    "recolor_strength": 1.0,
+    "filename": ""
+   }
+  },
+  {
+   "id": 36,
+   "type": "JarJarSplatBakeVertexTexture",
+   "pos": [
+    40,
+    2440
+   ],
+   "size": [
+    320,
+    196
+   ],
+   "flags": {},
+   "order": 35,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "file_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "file_path",
+     "widget": {
+      "name": "file_path"
+     }
+    },
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "link": null,
+     "localized_name": "mesh"
+    },
+    {
+     "name": "recolor_strength",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "recolor_strength",
+     "widget": {
+      "name": "recolor_strength"
+     }
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "filename",
+     "widget": {
+      "name": "filename"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "filepath",
+     "type": "STRING",
+     "links": []
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "links": []
+    },
+    {
+     "name": "model_3d",
+     "type": "FILE_3D_SPLAT_ANY",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarSplatBakeVertexTexture"
+   },
+   "widgets_values": [
+    "",
+    1.0,
+    ""
+   ],
+   "widgets_values_named": {
+    "file_path": "",
+    "recolor_strength": 1.0,
+    "filename": ""
+   }
+  },
+  {
+   "id": 37,
+   "type": "JarJarSplatEnhance",
+   "pos": [
+    420,
+    2440
+   ],
+   "size": [
+    320,
+    300
+   ],
+   "flags": {},
+   "order": 36,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "splat",
+     "type": "SPLAT",
+     "link": null,
+     "localized_name": "splat"
+    },
+    {
+     "name": "brightness",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "brightness",
+     "widget": {
+      "name": "brightness"
+     }
+    },
+    {
+     "name": "contrast",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "contrast",
+     "widget": {
+      "name": "contrast"
+     }
+    },
+    {
+     "name": "saturation",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "saturation",
+     "widget": {
+      "name": "saturation"
+     }
+    },
+    {
+     "name": "in_black",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "in_black",
+     "widget": {
+      "name": "in_black"
+     }
+    },
+    {
+     "name": "in_white",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "in_white",
+     "widget": {
+      "name": "in_white"
+     }
+    },
+    {
+     "name": "gamma",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "gamma",
+     "widget": {
+      "name": "gamma"
+     }
+    },
+    {
+     "name": "sh_boost",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "sh_boost",
+     "widget": {
+      "name": "sh_boost"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "splat",
+     "type": "SPLAT",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarSplatEnhance"
+   },
+   "widgets_values": [
+    0.0,
+    1.0,
+    1.0,
+    0.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "widgets_values_named": {
+    "brightness": 0.0,
+    "contrast": 1.0,
+    "saturation": 1.0,
+    "in_black": 0.0,
+    "in_white": 1.0,
+    "gamma": 1.0,
+    "sh_boost": 1.0
+   }
+  },
+  {
+   "id": 38,
+   "type": "JarJarSplatFillLight",
+   "pos": [
+    800,
+    2440
+   ],
+   "size": [
+    320,
+    170
+   ],
+   "flags": {},
+   "order": 37,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "splat",
+     "type": "SPLAT",
+     "link": null,
+     "localized_name": "splat"
+    },
+    {
+     "name": "fill",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "fill",
+     "widget": {
+      "name": "fill"
+     }
+    },
+    {
+     "name": "threshold",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "threshold",
+     "widget": {
+      "name": "threshold"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "splat",
+     "type": "SPLAT",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarSplatFillLight"
+   },
+   "widgets_values": [
+    0.6,
+    0.3
+   ],
+   "widgets_values_named": {
+    "fill": 0.6,
+    "threshold": 0.3
+   }
+  },
+  {
+   "id": 39,
+   "type": "JarJarSplatMultiviewTexture",
+   "pos": [
+    1180,
+    2440
+   ],
+   "size": [
+    320,
+    274
+   ],
+   "flags": {},
+   "order": 38,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "file_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "file_path",
+     "widget": {
+      "name": "file_path"
+     }
+    },
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "images"
+    },
+    {
+     "name": "yaw_start_deg",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "yaw_start_deg",
+     "widget": {
+      "name": "yaw_start_deg"
+     }
+    },
+    {
+     "name": "pitch_deg",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "pitch_deg",
+     "widget": {
+      "name": "pitch_deg"
+     }
+    },
+    {
+     "name": "fov_deg",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "fov_deg",
+     "widget": {
+      "name": "fov_deg"
+     }
+    },
+    {
+     "name": "recolor_strength",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "recolor_strength",
+     "widget": {
+      "name": "recolor_strength"
+     }
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "filename",
+     "widget": {
+      "name": "filename"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "filepath",
+     "type": "STRING",
+     "links": []
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "links": []
+    },
+    {
+     "name": "model_3d",
+     "type": "FILE_3D_SPLAT_ANY",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarSplatMultiviewTexture"
+   },
+   "widgets_values": [
+    "",
+    0.0,
+    15.0,
+    40.0,
+    1.0,
+    ""
+   ],
+   "widgets_values_named": {
+    "file_path": "",
+    "yaw_start_deg": 0.0,
+    "pitch_deg": 15.0,
+    "fov_deg": 40.0,
+    "recolor_strength": 1.0,
+    "filename": ""
+   }
+  },
+  {
+   "id": 40,
+   "type": "JarJarSplatReconstructScore",
+   "pos": [
+    1560,
+    2440
+   ],
+   "size": [
+    320,
+    196
+   ],
+   "flags": {},
+   "order": 39,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "splat",
+     "type": "SPLAT",
+     "link": null,
+     "localized_name": "splat"
+    },
+    {
+     "name": "reference_image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "reference_image"
+    },
+    {
+     "name": "width",
+     "type": "INT",
+     "link": null,
+     "localized_name": "width",
+     "widget": {
+      "name": "width"
+     }
+    },
+    {
+     "name": "height",
+     "type": "INT",
+     "link": null,
+     "localized_name": "height",
+     "widget": {
+      "name": "height"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "rendered",
+     "type": "IMAGE",
+     "links": []
+    },
+    {
+     "name": "psnr",
+     "type": "FLOAT",
+     "links": []
+    },
+    {
+     "name": "ssim",
+     "type": "FLOAT",
+     "links": []
+    },
+    {
+     "name": "mse",
+     "type": "FLOAT",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarSplatReconstructScore"
+   },
+   "widgets_values": [
+    512,
+    512
+   ],
+   "widgets_values_named": {
+    "width": 512,
+    "height": 512
+   }
+  },
+  {
+   "id": 41,
+   "type": "JarJarSplatToFilePath",
+   "pos": [
+    40,
+    2780
+   ],
+   "size": [
+    320,
+    170
+   ],
+   "flags": {},
+   "order": 40,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "splat",
+     "type": "SPLAT",
+     "link": null,
+     "localized_name": "splat"
+    },
+    {
+     "name": "format",
+     "type": "COMBO",
+     "link": null,
+     "localized_name": "format",
+     "widget": {
+      "name": "format"
+     }
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "filename",
+     "widget": {
+      "name": "filename"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "model_3d",
+     "type": "FILE_3D_SPLAT_ANY",
+     "links": []
+    },
+    {
+     "name": "filepath",
+     "type": "STRING",
+     "links": []
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarSplatToFilePath"
+   },
+   "widgets_values": [
+    "ply",
+    ""
+   ],
+   "widgets_values_named": {
+    "format": "ply",
+    "filename": ""
+   }
+  },
+  {
+   "id": 42,
+   "type": "JarJarSplatToMesh",
+   "pos": [
+    420,
+    2780
+   ],
+   "size": [
+    320,
+    560
+   ],
+   "flags": {},
+   "order": 41,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "file_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "file_path",
+     "widget": {
+      "name": "file_path"
+     }
+    },
+    {
+     "name": "format",
+     "type": "COMBO",
+     "link": null,
+     "localized_name": "format",
+     "widget": {
+      "name": "format"
+     }
+    },
+    {
+     "name": "output_folder",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "output_folder",
+     "widget": {
+      "name": "output_folder"
+     }
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "filename",
+     "widget": {
+      "name": "filename"
+     }
+    },
+    {
+     "name": "opacity_cutoff",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "opacity_cutoff",
+     "widget": {
+      "name": "opacity_cutoff"
+     }
+    },
+    {
+     "name": "poisson_depth",
+     "type": "INT",
+     "link": null,
+     "localized_name": "poisson_depth",
+     "widget": {
+      "name": "poisson_depth"
+     }
+    },
+    {
+     "name": "max_points",
+     "type": "INT",
+     "link": null,
+     "localized_name": "max_points",
+     "widget": {
+      "name": "max_points"
+     }
+    },
+    {
+     "name": "rotate_x",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "rotate_x",
+     "widget": {
+      "name": "rotate_x"
+     }
+    },
+    {
+     "name": "rotate_y",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "rotate_y",
+     "widget": {
+      "name": "rotate_y"
+     }
+    },
+    {
+     "name": "rotate_z",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "rotate_z",
+     "widget": {
+      "name": "rotate_z"
+     }
+    },
+    {
+     "name": "decimate_enable",
+     "type": "BOOLEAN",
+     "link": null,
+     "localized_name": "decimate_enable",
+     "widget": {
+      "name": "decimate_enable"
+     }
+    },
+    {
+     "name": "target_faces",
+     "type": "INT",
+     "link": null,
+     "localized_name": "target_faces",
+     "widget": {
+      "name": "target_faces"
+     }
+    },
+    {
+     "name": "preserve_topology",
+     "type": "BOOLEAN",
+     "link": null,
+     "localized_name": "preserve_topology",
+     "widget": {
+      "name": "preserve_topology"
+     }
+    },
+    {
+     "name": "quality_threshold",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "quality_threshold",
+     "widget": {
+      "name": "quality_threshold"
+     }
+    },
+    {
+     "name": "bake_texture",
+     "type": "BOOLEAN",
+     "link": null,
+     "localized_name": "bake_texture",
+     "widget": {
+      "name": "bake_texture"
+     }
+    },
+    {
+     "name": "texture_size",
+     "type": "INT",
+     "link": null,
+     "localized_name": "texture_size",
+     "widget": {
+      "name": "texture_size"
+     }
+    },
+    {
+     "name": "flip_faces",
+     "type": "BOOLEAN",
+     "link": null,
+     "localized_name": "flip_faces",
+     "widget": {
+      "name": "flip_faces"
+     }
+    },
+    {
+     "name": "model_3d",
+     "type": "FILE_3D,FILE_3D_SPLAT_ANY,FILE_3D_PLY,FILE_3D_SPLAT,FILE_3D_KSPLAT,FILE_3D_SPZ",
+     "link": null,
+     "localized_name": "model_3d"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "mesh",
+     "type": "TRIMESH",
+     "links": []
+    },
+    {
+     "name": "filepath",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarSplatToMesh"
+   },
+   "widgets_values": [
+    "",
+    "obj",
+    "./output",
+    "",
+    0.05,
+    9,
+    100000,
+    0.0,
+    0.0,
+    0.0,
+    true,
+    50000,
+    true,
+    0.3,
+    true,
+    2048,
+    false
+   ],
+   "widgets_values_named": {
+    "file_path": "",
+    "format": "obj",
+    "output_folder": "./output",
+    "filename": "",
+    "opacity_cutoff": 0.05,
+    "poisson_depth": 9,
+    "max_points": 100000,
+    "rotate_x": 0.0,
+    "rotate_y": 0.0,
+    "rotate_z": 0.0,
+    "decimate_enable": true,
+    "target_faces": 50000,
+    "preserve_topology": true,
+    "quality_threshold": 0.3,
+    "bake_texture": true,
+    "texture_size": 2048,
+    "flip_faces": false
+   }
+  },
+  {
+   "id": 43,
+   "type": "JarJarSubmit3D",
+   "pos": [
+    800,
+    2780
+   ],
+   "size": [
+    320,
+    196
+   ],
+   "flags": {},
+   "order": 42,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "model_3d",
+     "type": "FILE_3D,FILE_3D_GLB,FILE_3D_GLTF,FILE_3D_OBJ,FILE_3D_FBX,FILE_3D_STL,FILE_3D_USDZ,FILE_3D_PLY,FILE_3D_SPLAT,FILE_3D_SPZ,FILE_3D_KSPLAT,FILE_3D_SPLAT_ANY,FILE_3D_POINT_CLOUD_ANY",
+     "link": null,
+     "localized_name": "model_3d"
+    },
+    {
+     "name": "prompt",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "prompt",
+     "widget": {
+      "name": "prompt"
+     }
+    },
+    {
+     "name": "api_url",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "api_url",
+     "widget": {
+      "name": "api_url"
+     }
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "filename",
+     "widget": {
+      "name": "filename"
+     }
+    }
+   ],
+   "outputs": [],
+   "properties": {
+    "Node name for S&R": "JarJarSubmit3D"
+   },
+   "widgets_values": [
+    "",
+    "D:\\EXAMPLE\\api_url",
+    ""
+   ],
+   "widgets_values_named": {
+    "prompt": "",
+    "api_url": "D:\\EXAMPLE\\api_url",
+    "filename": ""
+   }
+  },
+  {
+   "id": 44,
+   "type": "JarJarTextList",
+   "pos": [
+    1180,
+    2780
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 43,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "text_block",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "text_block",
+     "widget": {
+      "name": "text_block"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "lines",
+     "type": "LIST",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarTextList"
+   },
+   "widgets_values": [
+    "First line\nSecond line\nThird line"
+   ],
+   "widgets_values_named": {
+    "text_block": "First line\nSecond line\nThird line"
+   }
+  },
+  {
+   "id": 45,
+   "type": "JarJarTileImage",
+   "pos": [
+    1560,
+    2780
+   ],
+   "size": [
+    320,
+    222
+   ],
+   "flags": {},
+   "order": 44,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "rows",
+     "type": "INT",
+     "link": null,
+     "localized_name": "rows",
+     "widget": {
+      "name": "rows"
+     }
+    },
+    {
+     "name": "columns",
+     "type": "INT",
+     "link": null,
+     "localized_name": "columns",
+     "widget": {
+      "name": "columns"
+     }
+    },
+    {
+     "name": "width",
+     "type": "INT",
+     "link": null,
+     "localized_name": "width",
+     "widget": {
+      "name": "width"
+     }
+    },
+    {
+     "name": "height",
+     "type": "INT",
+     "link": null,
+     "localized_name": "height",
+     "widget": {
+      "name": "height"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarTileImage"
+   },
+   "widgets_values": [
+    3,
+    3,
+    512,
+    512
+   ],
+   "widgets_values_named": {
+    "rows": 3,
+    "columns": 3,
+    "width": 512,
+    "height": 512
+   }
+  },
+  {
+   "id": 46,
+   "type": "JarJarUVUnwrap",
+   "pos": [
+    40,
+    3120
+   ],
+   "size": [
+    320,
+    248
+   ],
+   "flags": {},
+   "order": 45,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "trimesh",
+     "type": "TRIMESH",
+     "link": null,
+     "localized_name": "trimesh"
+    },
+    {
+     "name": "output_folder",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "output_folder",
+     "widget": {
+      "name": "output_folder"
+     }
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "filename",
+     "widget": {
+      "name": "filename"
+     }
+    },
+    {
+     "name": "blender_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "blender_path",
+     "widget": {
+      "name": "blender_path"
+     }
+    },
+    {
+     "name": "angle_limit",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "angle_limit",
+     "widget": {
+      "name": "angle_limit"
+     }
+    },
+    {
+     "name": "island_margin",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "island_margin",
+     "widget": {
+      "name": "island_margin"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "output_file_path",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarUVUnwrap"
+   },
+   "widgets_values": [
+    "./output",
+    "unwrapped_mesh.glb",
+    "D:\\EXAMPLE\\blender_path",
+    66.0,
+    0.02
+   ],
+   "widgets_values_named": {
+    "output_folder": "./output",
+    "filename": "unwrapped_mesh.glb",
+    "blender_path": "D:\\EXAMPLE\\blender_path",
+    "angle_limit": 66.0,
+    "island_margin": 0.02
+   }
+  },
+  {
+   "id": 47,
+   "type": "JarJarUnirig",
+   "pos": [
+    420,
+    3120
+   ],
+   "size": [
+    320,
+    248
+   ],
+   "flags": {},
+   "order": 46,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "trimesh",
+     "type": "TRIMESH",
+     "link": null,
+     "localized_name": "trimesh"
+    },
+    {
+     "name": "output_folder",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "output_folder",
+     "widget": {
+      "name": "output_folder"
+     }
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "filename",
+     "widget": {
+      "name": "filename"
+     }
+    },
+    {
+     "name": "blender_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "blender_path",
+     "widget": {
+      "name": "blender_path"
+     }
+    },
+    {
+     "name": "skeleton_template",
+     "type": "COMBO",
+     "link": null,
+     "localized_name": "skeleton_template",
+     "widget": {
+      "name": "skeleton_template"
+     }
+    },
+    {
+     "name": "auto_weights",
+     "type": "BOOLEAN",
+     "link": null,
+     "localized_name": "auto_weights",
+     "widget": {
+      "name": "auto_weights"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "fbx_output_path",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarUnirig"
+   },
+   "widgets_values": [
+    "./output",
+    "rigged_model.fbx",
+    "D:\\EXAMPLE\\blender_path",
+    "mixamo",
+    true
+   ],
+   "widgets_values_named": {
+    "output_folder": "./output",
+    "filename": "rigged_model.fbx",
+    "blender_path": "D:\\EXAMPLE\\blender_path",
+    "skeleton_template": "mixamo",
+    "auto_weights": true
+   }
+  },
+  {
+   "id": 48,
+   "type": "JarJarUpscaleSplatsAdaptive",
+   "pos": [
+    800,
+    3120
+   ],
+   "size": [
+    320,
+    196
+   ],
+   "flags": {},
+   "order": 47,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "splat",
+     "type": "SPLAT",
+     "link": null,
+     "localized_name": "splat"
+    },
+    {
+     "name": "neighbors",
+     "type": "INT",
+     "link": null,
+     "localized_name": "neighbors",
+     "widget": {
+      "name": "neighbors"
+     }
+    },
+    {
+     "name": "variance_threshold",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "variance_threshold",
+     "widget": {
+      "name": "variance_threshold"
+     }
+    },
+    {
+     "name": "color_push",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "color_push",
+     "widget": {
+      "name": "color_push"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "splat",
+     "type": "SPLAT",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarUpscaleSplatsAdaptive"
+   },
+   "widgets_values": [
+    8,
+    0.005,
+    0.5
+   ],
+   "widgets_values_named": {
+    "neighbors": 8,
+    "variance_threshold": 0.005,
+    "color_push": 0.5
+   }
+  },
+  {
+   "id": 49,
+   "type": "JarJarUpscaleSplatsSubdivide",
+   "pos": [
+    1180,
+    3120
+   ],
+   "size": [
+    320,
+    170
+   ],
+   "flags": {},
+   "order": 48,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "splat",
+     "type": "SPLAT",
+     "link": null,
+     "localized_name": "splat"
+    },
+    {
+     "name": "factor",
+     "type": "INT",
+     "link": null,
+     "localized_name": "factor",
+     "widget": {
+      "name": "factor"
+     }
+    },
+    {
+     "name": "scale_decay",
+     "type": "FLOAT",
+     "link": null,
+     "localized_name": "scale_decay",
+     "widget": {
+      "name": "scale_decay"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "splat",
+     "type": "SPLAT",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarUpscaleSplatsSubdivide"
+   },
+   "widgets_values": [
+    2,
+    1.0
+   ],
+   "widgets_values_named": {
+    "factor": 2,
+    "scale_decay": 1.0
+   }
+  },
+  {
+   "id": 50,
+   "type": "JarJarListFiles",
+   "pos": [
+    1560,
+    3120
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 49,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "path",
+     "widget": {
+      "name": "path"
+     }
+    },
+    {
+     "name": "include_extensions",
+     "type": "COMBO",
+     "link": null,
+     "localized_name": "include_extensions",
+     "widget": {
+      "name": "include_extensions"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "file_list",
+     "type": "LIST",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarListFiles"
+   },
+   "widgets_values": [
+    "./",
+    "enable"
+   ],
+   "widgets_values_named": {
+    "path": "./",
+    "include_extensions": "enable"
+   }
+  },
+  {
+   "id": 51,
+   "type": "JarJarLoadImageByIndex",
+   "pos": [
+    40,
+    3460
+   ],
+   "size": [
+    320,
+    150
+   ],
+   "flags": {},
+   "order": 50,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "directory",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "directory",
+     "widget": {
+      "name": "directory"
+     }
+    },
+    {
+     "name": "index",
+     "type": "INT",
+     "link": null,
+     "localized_name": "index",
+     "widget": {
+      "name": "index"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": []
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarLoadImageByIndex"
+   },
+   "widgets_values": [
+    "",
+    0
+   ],
+   "widgets_values_named": {
+    "directory": "",
+    "index": 0
+   }
+  },
+  {
+   "id": 52,
+   "type": "JarJarPullImage",
+   "pos": [
+    420,
+    3460
+   ],
+   "size": [
+    320,
+    170
+   ],
+   "flags": {},
+   "order": 51,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "file",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "file",
+     "widget": {
+      "name": "file"
+     }
+    },
+    {
+     "name": "api_url",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "api_url",
+     "widget": {
+      "name": "api_url"
+     }
+    },
+    {
+     "name": "api_key",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "api_key",
+     "widget": {
+      "name": "api_key"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarPullImage"
+   },
+   "widgets_values": [
+    "",
+    "D:\\EXAMPLE\\api_url",
+    ""
+   ],
+   "widgets_values_named": {
+    "file": "",
+    "api_url": "D:\\EXAMPLE\\api_url",
+    "api_key": ""
+   }
+  },
+  {
+   "id": 53,
+   "type": "JarJarPushImage",
+   "pos": [
+    800,
+    3460
+   ],
+   "size": [
+    320,
+    274
+   ],
+   "flags": {},
+   "order": 52,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": null,
+     "localized_name": "image"
+    },
+    {
+     "name": "api_url",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "api_url",
+     "widget": {
+      "name": "api_url"
+     }
+    },
+    {
+     "name": "title",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "title",
+     "widget": {
+      "name": "title"
+     }
+    },
+    {
+     "name": "prompt",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "prompt",
+     "widget": {
+      "name": "prompt"
+     }
+    },
+    {
+     "name": "tags",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "tags",
+     "widget": {
+      "name": "tags"
+     }
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "filename",
+     "widget": {
+      "name": "filename"
+     }
+    },
+    {
+     "name": "api_key",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "api_key",
+     "widget": {
+      "name": "api_key"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "url",
+     "type": "STRING",
+     "links": []
+    },
+    {
+     "name": "file",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarPushImage"
+   },
+   "widgets_values": [
+    "D:\\EXAMPLE\\api_url",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "widgets_values_named": {
+    "api_url": "D:\\EXAMPLE\\api_url",
+    "title": "",
+    "prompt": "",
+    "tags": "",
+    "filename": "",
+    "api_key": ""
+   }
+  },
+  {
+   "id": 54,
+   "type": "JarJarPushModel",
+   "pos": [
+    1180,
+    3460
+   ],
+   "size": [
+    320,
+    248
+   ],
+   "flags": {},
+   "order": 53,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "file_path",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "file_path",
+     "widget": {
+      "name": "file_path"
+     }
+    },
+    {
+     "name": "api_url",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "api_url",
+     "widget": {
+      "name": "api_url"
+     }
+    },
+    {
+     "name": "title",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "title",
+     "widget": {
+      "name": "title"
+     }
+    },
+    {
+     "name": "prompt",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "prompt",
+     "widget": {
+      "name": "prompt"
+     }
+    },
+    {
+     "name": "tags",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "tags",
+     "widget": {
+      "name": "tags"
+     }
+    },
+    {
+     "name": "api_key",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "api_key",
+     "widget": {
+      "name": "api_key"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "url",
+     "type": "STRING",
+     "links": []
+    },
+    {
+     "name": "file",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarPushModel"
+   },
+   "widgets_values": [
+    "",
+    "D:\\EXAMPLE\\api_url",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "widgets_values_named": {
+    "file_path": "",
+    "api_url": "D:\\EXAMPLE\\api_url",
+    "title": "",
+    "prompt": "",
+    "tags": "",
+    "api_key": ""
+   }
+  },
+  {
+   "id": 55,
+   "type": "JarJarPushModel3D",
+   "pos": [
+    1560,
+    3460
+   ],
+   "size": [
+    320,
+    274
+   ],
+   "flags": {},
+   "order": 54,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "model_3d",
+     "type": "FILE_3D,FILE_3D_GLB,FILE_3D_GLTF,FILE_3D_OBJ,FILE_3D_FBX,FILE_3D_STL,FILE_3D_USDZ,FILE_3D_PLY,FILE_3D_SPLAT,FILE_3D_SPZ,FILE_3D_KSPLAT,FILE_3D_SPLAT_ANY,FILE_3D_POINT_CLOUD_ANY",
+     "link": null,
+     "localized_name": "model_3d"
+    },
+    {
+     "name": "prompt",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "prompt",
+     "widget": {
+      "name": "prompt"
+     }
+    },
+    {
+     "name": "title",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "title",
+     "widget": {
+      "name": "title"
+     }
+    },
+    {
+     "name": "tags",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "tags",
+     "widget": {
+      "name": "tags"
+     }
+    },
+    {
+     "name": "api_url",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "api_url",
+     "widget": {
+      "name": "api_url"
+     }
+    },
+    {
+     "name": "filename",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "filename",
+     "widget": {
+      "name": "filename"
+     }
+    },
+    {
+     "name": "api_key",
+     "type": "STRING",
+     "link": null,
+     "localized_name": "api_key",
+     "widget": {
+      "name": "api_key"
+     }
+    }
+   ],
+   "outputs": [
+    {
+     "name": "url",
+     "type": "STRING",
+     "links": []
+    },
+    {
+     "name": "file",
+     "type": "STRING",
+     "links": []
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "JarJarPushModel3D"
+   },
+   "widgets_values": [
+    "",
+    "",
+    "",
+    "D:\\EXAMPLE\\api_url",
+    "",
+    ""
+   ],
+   "widgets_values_named": {
+    "prompt": "",
+    "title": "",
+    "tags": "",
+    "api_url": "D:\\EXAMPLE\\api_url",
+    "filename": "",
+    "api_key": ""
+   }
+  }
+ ],
+ "links": [],
+ "groups": [],
+ "extra": {
+  "ds": {
+   "scale": 1.0,
+   "offset": [
+    0,
+    0
+   ]
+  }
+ },
+ "version": 0.4
+}

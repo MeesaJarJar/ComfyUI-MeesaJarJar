@@ -13,6 +13,7 @@ Stdlib-only HTTP (urllib) + torch/PIL/numpy already required by ComfyUI.
 
 import io
 import json
+import logging
 import os
 import time
 import urllib.error
@@ -22,6 +23,8 @@ import urllib.request
 import numpy as np
 import torch
 from PIL import Image
+
+log = logging.getLogger("jarjar")
 
 MEESA_DEFAULT_URL = "http://localhost:8000/api.php"
 _MEESA_MAX_PROMPT = 4000
@@ -85,7 +88,7 @@ def _check_ok(status, text):
     return result
 
 
-class MeesaAssetsPushImage:
+class JarJarPushImage:
     """Upload an IMAGE batch (first frame) as PNG to MeesaAssets."""
 
     @classmethod
@@ -105,7 +108,7 @@ class MeesaAssetsPushImage:
     RETURN_TYPES = ("STRING", "STRING")
     RETURN_NAMES = ("url", "file")
     FUNCTION = "push"
-    CATEGORY = "MeesaAssets"
+    CATEGORY = "JarJar/Meesa"
     DESCRIPTION = "Pushes the first IMAGE in the batch to MeesaAssets api.php as PNG with title/prompt/tags. api_key empty = shared library, else your personal library. Returns download url + stored file name."
     OUTPUT_NODE = True
 
@@ -137,7 +140,7 @@ class MeesaAssetsPushImage:
         return (url, item.get("file", filename))
 
 
-class MeesaAssetsPushModel:
+class JarJarPushModel:
     """Upload a model file from disk (STRING path) to MeesaAssets."""
 
     @classmethod
@@ -156,7 +159,7 @@ class MeesaAssetsPushModel:
     RETURN_TYPES = ("STRING", "STRING")
     RETURN_NAMES = ("url", "file")
     FUNCTION = "push"
-    CATEGORY = "MeesaAssets"
+    CATEGORY = "JarJar/Meesa"
     DESCRIPTION = "Uploads a 3D model file from disk (.ply .obj .glb .gltf .stl .splat .ksplat .spz, audio/video too) to MeesaAssets. Wire a SaveGLB path or any file path. Returns url + stored file name."
     OUTPUT_NODE = True
 
@@ -182,7 +185,7 @@ class MeesaAssetsPushModel:
         return (url, item.get("file", os.path.basename(file_path)))
 
 
-class MeesaAssetsPullImage:
+class JarJarPullImage:
     """Download an image asset by file name from MeesaAssets -> IMAGE."""
 
     @classmethod
@@ -198,7 +201,7 @@ class MeesaAssetsPullImage:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("image",)
     FUNCTION = "pull"
-    CATEGORY = "MeesaAssets"
+    CATEGORY = "JarJar/Meesa"
     DESCRIPTION = "Retrieves an image from MeesaAssets by stored file name (see portfolio or api.php?action=list). api_key unlocks your private files. Returns IMAGE tensor for edit loops."
 
     def pull(self, file, api_url=MEESA_DEFAULT_URL, api_key=""):
@@ -222,30 +225,39 @@ class MeesaAssetsPullImage:
 
 
 NODE_CLASS_MAPPINGS = {
-    "MeesaAssetsPushImage": MeesaAssetsPushImage,
-    "MeesaAssetsPushModel": MeesaAssetsPushModel,
-    "MeesaAssetsPullImage": MeesaAssetsPullImage,
+    "JarJarPushImage": JarJarPushImage,
+    "JarJarPushModel": JarJarPushModel,
+    "JarJarPullImage": JarJarPullImage,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "MeesaAssetsPushImage": "Push Image to MeesaAssets",
-    "MeesaAssetsPushModel": "Push 3D Model to MeesaAssets",
-    "MeesaAssetsPullImage": "Pull Image from MeesaAssets",
+    "JarJarPushImage": "JarJar Push Image",
+    "JarJarPushModel": "JarJar Push Model",
+    "JarJarPullImage": "JarJar Pull Image",
 }
 
-# ---- Optional new-API File3D node (only if comfy_api is importable) ----
+# ---- File3D node: always registered (deterministic key) ----
 try:
     from comfy_api.latest import IO, Types  # noqa: E402
 
-    MEESA_3D_FORMATS = ("ply", "obj", "glb", "gltf", "stl", "splat", "ksplat", "spz")
+    _HAS_COMFY_API = True
+except Exception as _e:
+    IO = None  # type: ignore
+    Types = None  # type: ignore
+    _HAS_COMFY_API = False
+    log.debug("comfy_api unavailable, JarJarPushModel3D stub registered: %s", _e, exc_info=True)
 
-    class MeesaAssetsPushModel3D(IO.ComfyNode):
+MEESA_3D_FORMATS = ("ply", "obj", "glb", "gltf", "stl", "splat", "ksplat", "spz")
+
+
+if _HAS_COMFY_API:
+    class JarJarPushModel3D(IO.ComfyNode):
         @classmethod
         def define_schema(cls):
             return IO.Schema(
-                node_id="MeesaAssetsPushModel3D",
-                display_name="Push 3D (File3D) to MeesaAssets",
-                category="MeesaAssets",
+                node_id="JarJarPushModel3D",
+                display_name="JarJar Push Model 3D",
+                category="JarJar/Meesa",
                 description="Uploads a File3D link (same wire as SaveGLB / SplatToFile3D) straight to MeesaAssets api.php.",
                 inputs=[
                     IO.MultiType.Input(
@@ -287,7 +299,34 @@ try:
             url = _keyed(base + "/" + item.get("url", ""), api_key)
             return IO.NodeOutput(url, item.get("file", filename))
 
-    NODE_CLASS_MAPPINGS["MeesaAssetsPushModel3D"] = MeesaAssetsPushModel3D
-    NODE_DISPLAY_NAME_MAPPINGS["MeesaAssetsPushModel3D"] = "Push 3D (File3D) to MeesaAssets"
-except Exception:
-    pass
+else:
+    class JarJarPushModel3D:
+        """Stub when comfy_api File3D is unavailable. Same registry key, clean error."""
+
+        @classmethod
+        def INPUT_TYPES(cls):
+            return {"required": {
+                "model_3d": ("STRING", {"default": "", "multiline": False}),
+                "api_url": ("STRING", {"default": MEESA_DEFAULT_URL, "multiline": False}),
+            },
+                "optional": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "title": ("STRING", {"default": "", "multiline": False}),
+                "tags": ("STRING", {"default": "", "multiline": False}),
+                "filename": ("STRING", {"default": "", "multiline": False}),
+                "api_key": ("STRING", {"default": "", "multiline": False}),
+            }}
+
+        RETURN_TYPES = ("STRING", "STRING")
+        RETURN_NAMES = ("url", "file")
+        FUNCTION = "execute"
+        CATEGORY = "JarJar/Meesa"
+        DESCRIPTION = "Requires comfy_api File3D (update ComfyUI). Stub keeps registry deterministic."
+        OUTPUT_NODE = True
+
+        def execute(self, model_3d="", api_url=MEESA_DEFAULT_URL, prompt="", title="", tags="", filename="", api_key=""):
+            raise RuntimeError("comfy_api required: JarJarPushModel3D needs ComfyUI with comfy_api File3D support.")
+
+
+NODE_CLASS_MAPPINGS["JarJarPushModel3D"] = JarJarPushModel3D
+NODE_DISPLAY_NAME_MAPPINGS["JarJarPushModel3D"] = "JarJar Push Model 3D"

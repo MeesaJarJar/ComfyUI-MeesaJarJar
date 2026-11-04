@@ -46,13 +46,13 @@ def _cleanup_faces(mesh):
         if not mask.all():
             mesh.update_faces(mask)
     except Exception:
-        pass
+        log.debug("SplatToMesh cleanup nondegenerate_faces skipped", exc_info=True)
     try:
         mask = mesh.unique_faces()
         if not mask.all():
             mesh.update_faces(mask)
     except Exception:
-        pass
+        log.debug("SplatToMesh cleanup unique_faces skipped", exc_info=True)
     return mesh
 
 
@@ -77,6 +77,7 @@ def decimate_mesh(mesh, target_faces=50000, preserve_topology=True, quality_thre
     try:
         n_faces = len(mesh.faces)
     except Exception:
+        log.debug("SplatToMesh decimate face count unreadable", exc_info=True)
         n_faces = 0
     if n_faces <= target_faces:
         log.info("SplatToMesh decimate: %d faces <= target %d, skipping",
@@ -351,12 +352,13 @@ class JarJarSplatToMesh(IO.ComfyNode):
                 data = bytes(model_3d.get_bytes())
                 return (len(data), hashlib.sha256(data).hexdigest()) + sig
             except Exception:
+                log.debug("SplatToMesh fingerprint model_3d unreadable", exc_info=True)
                 return ("model_3d",) + sig
         try:
             if file_path and os.path.exists(file_path):
                 return (os.path.getmtime(file_path),) + sig
         except Exception:
-            pass
+            log.debug("SplatToMesh fingerprint file mtime unreadable", exc_info=True)
         return (file_path,) + sig
 
     @classmethod
@@ -437,7 +439,7 @@ class JarJarSplatToMesh(IO.ComfyNode):
             vc = mesh.visual.vertex_colors
             has_vc = vc is not None and len(vc) == len(mesh.vertices)
         except Exception:
-            pass
+            log.debug("SplatToMesh vertex_colors check skipped", exc_info=True)
 
         n_faces = len(mesh.faces) if getattr(mesh, "faces", None) is not None else 0
         if bake_texture and n_faces > 0 and has_vc:

@@ -16,6 +16,7 @@ Temp files are managed by ComfyUI, nothing lands in output/.
 """
 
 import logging
+import math
 import os
 import shutil
 import uuid
@@ -99,6 +100,7 @@ class JarJarPreviewMesh(IO.ComfyNode):
                 import trimesh
                 _MESH_TYPES = (trimesh.Trimesh, trimesh.Scene, trimesh.points.PointCloud)
             except Exception:
+                log.debug("PreviewMesh trimesh types unavailable", exc_info=True)
                 _MESH_TYPES = ()
             if _MESH_TYPES and not isinstance(mesh, _MESH_TYPES):
                 raise ValueError(
@@ -117,6 +119,7 @@ class JarJarPreviewMesh(IO.ComfyNode):
                 faces = getattr(mesh, "faces", None)
                 n_faces = len(faces) if faces is not None else 0
             except Exception:
+                log.debug("PreviewMesh face count unreadable", exc_info=True)
                 n_faces = 0
             if n_faces > 0:
                 # Prefer GLB (keeps vertex colors / PBR textures). Textured
@@ -211,10 +214,6 @@ class JarJarFrameCamera(IO.ComfyNode):
 
     @classmethod
     def execute(cls, mesh, yaw_deg=30.0, pitch_deg=20.0, distance_scale=2.2) -> IO.NodeOutput:
-        import math
-
-        import numpy as np
-
         if mesh is None:
             raise ValueError("JarJarFrameCamera needs a mesh.")
         verts = np.asarray(mesh.vertices, dtype=np.float64)
@@ -321,6 +320,7 @@ class JarJarPreviewMeshImage(IO.ComfyNode):
         try:
             vc = np.asarray(mesh.visual.vertex_colors, dtype=np.float64)
         except Exception:
+            log.debug("PreviewMeshImage vertex colors unreadable, using base color", exc_info=True)
             vc = None
         if vc is not None and vc.shape[0] == len(mesh.vertices) and vc.shape[1] >= 3:
             rgb = vc[:, :3]
@@ -413,6 +413,7 @@ class JarJarPreviewMeshImage(IO.ComfyNode):
             try:
                 vc = np.asarray(mesh.visual.vertex_colors, dtype=np.float64)
             except Exception:
+                log.debug("PreviewMeshImage point colors unreadable", exc_info=True)
                 vc = None
             if vc is not None and vc.shape[0] == len(vertices) and vc.shape[1] >= 3:
                 pc = vc[:, :3]

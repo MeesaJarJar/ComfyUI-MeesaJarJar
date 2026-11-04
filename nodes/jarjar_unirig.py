@@ -9,10 +9,25 @@ Pipeline: TRIMESH -> temp GLB -> Blender background (import, build
 proportion-fitted armature, parent with automatic weights) -> rigged FBX.
 """
 
+import logging
 import os
+import shutil
 import subprocess
 import tempfile
 from pathlib import Path
+
+log = logging.getLogger("jarjar")
+
+
+def _resolve_blender_path(explicit=""):
+    # Blender 4.4+ tested. Resolve at runtime, never hardcode an install path.
+    explicit = (explicit or "").strip()
+    if explicit:
+        return explicit
+    env_path = os.environ.get("BLENDER_PATH", "").strip()
+    if env_path:
+        return env_path
+    return shutil.which("blender") or ""
 
 
 # UniRig bone names, pulled from
@@ -72,7 +87,8 @@ class JarJarUnirig:
     """Auto-rig TRIMESH to a UniRig-named armature via Blender (no ML deps)."""
 
     def __init__(self):
-        self.blender_path = r"C:\Program Files\Blender Foundation\Blender 5.1\blender.exe"
+        # Blender 4.4+ tested; resolved at runtime via _resolve_blender_path().
+        self.blender_path = ""
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -83,7 +99,7 @@ class JarJarUnirig:
                 "filename": ("STRING", {"default": "rigged_model.fbx", "multiline": False}),
             },
             "optional": {
-                "blender_path": ("STRING", {"default": r"C:\Program Files\Blender Foundation\Blender 5.1\blender.exe", "multiline": False}),
+                "blender_path": ("STRING", {"default": "", "multiline": False}),
                 "skeleton_template": (["mixamo", "vroid"], {"default": "mixamo"}),
                 "auto_weights": ("BOOLEAN", {"default": True}),
             },
@@ -103,12 +119,13 @@ class JarJarUnirig:
                  blender_path: str = None, skeleton_template: str = "mixamo",
                  auto_weights: bool = True):
         try:
-            if blender_path:
-                self.blender_path = blender_path
+            resolved = _resolve_blender_path(blender_path)
+            if resolved:
+                self.blender_path = resolved
 
-            if not os.path.exists(self.blender_path):
-                msg = f"Error: Blender not found at: {self.blender_path}"
-                print(msg)
+            if not self.blender_path or not os.path.exists(self.blender_path):
+                msg = f"Error: Blender not found: '{self.blender_path}'. Set BLENDER_PATH or install Blender."
+                log.warning("%s", msg)
                 return (msg,)
 
             bones = MIXAMO_BODY if skeleton_template != "vroid" else VROID_BODY
@@ -227,7 +244,7 @@ except Exception as e:
                 tmp_script.write(blender_script)
                 script_path = tmp_script.name
 
-            print(f"JarJarUnirig: rigging with {skeleton_template} template ({len(bones)} bones)...")
+            log.info("JarJarUnirig: rigging with %s template (%d bones)...", skeleton_template, len(bones))
             result = subprocess.run(
                 [self.blender_path, "--background", "--python", script_path],
                 capture_output=True, text=True, check=False,
@@ -236,34 +253,29 @@ except Exception as e:
             for f in (temp_input_path, script_path):
                 try:
                     os.remove(f)
-                except Exception:
+                except OSError:
                     pass
 
             if os.path.exists(output_file):
                 msg = f"Rigged FBX saved to: {output_file} ({os.path.getsize(output_file):,} bytes)"
-                print(msg)
-                print("--- Blender Output ---")
-                print(result.stdout[-3000:])
+                log.info("%s", msg)
+                log.info("--- Blender Output ---\n%s", result.stdout[-3000:])
                 return (str(output_file),)
             msg = f"Error: FBX not created.\nBlender out:\n{result.stdout[-2000:]}\nBlender err:\n{result.stderr[-2000:]}"
-            print(msg)
+            log.warning("%s", msg)
             return (msg,)
 
         except (AttributeError, TypeError):
             msg = "Error: Input is not a valid trimesh object. Expected TRIMESH output."
-            print(msg)
+            log.warning("%s", msg)
             return (msg,)
         except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as e:
-            import traceback
-            traceback.print_exc()
+            log.exception("Error during UniRig-compatible rigging")
             msg = f"Error during UniRig-compatible rigging: {e}"
-            print(msg)
             return (msg,)
         except Exception as e:
-            import traceback
-            traceback.print_exc()
+            log.exception("Error during UniRig-compatible rigging")
             msg = f"Error during UniRig-compatible rigging: {e}"
-            print(msg)
             return (msg,)
 
 

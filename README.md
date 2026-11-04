@@ -13,7 +13,7 @@ Unified pack merging all JarJar node sets. Base path: `ComfyUI/custom_nodes/Comf
 
 | Key | Display | File | Purpose |
 | --- | --- | --- | --- |
-| LoadImageByIndex | Load Image By Index | `nodes/image_io_nodes.py` | Load single image from folder by index. |
+| JarJarLoadImageByIndex | JarJar Load Image By Index | `nodes/image_io_nodes.py` | Load single image from folder by index. |
 | JarJarLoadImageFolder | JarJar Load Image Folder | `nodes/image_io_nodes.py` | Load images from a folder by index. |
 | JarJarMeesaLoadImagesFromFolder | JarJar Load Images From Folder (Meesa) | `nodes/image_io_nodes.py` | Rich folder loader (owns no canonical key). |
 | JarJarSaveImage | JarJar Save Image | `nodes/image_io_nodes.py` | Save IMAGE with options. |
@@ -41,7 +41,7 @@ Unified pack merging all JarJar node sets. Base path: `ComfyUI/custom_nodes/Comf
 
 | Key | Display | File | Purpose |
 | --- | --- | --- | --- |
-| ListFilesNode | List Files Node | `nodes/list_utils_nodes.py` | List files in a folder. |
+| JarJarListFiles | JarJar List Files | `nodes/list_utils_nodes.py` | List files in a folder. |
 | JarJarFolderFilesByExt | JarJar: Folder Files by Extension | `nodes/list_utils_nodes.py` | List folder files filtered by extension. |
 | JarJarTextList | JarJar Text List | `nodes/list_utils_nodes.py` | Build a text list. |
 | JarJarCSVFileToList | JarJar CSV File To List | `nodes/list_utils_nodes.py` | Read CSV file into list. |
@@ -68,10 +68,10 @@ Unified pack merging all JarJar node sets. Base path: `ComfyUI/custom_nodes/Comf
 | JarJarSplatToMesh | JarJar: Splat PLY to Textured Mesh | `nodes/splat_mesh_export_nodes.py` | Reconstruct textured mesh from splat PLY. |
 | JarJarSplatToFilePath | JarJar: Splat to File + Path | `nodes/splat_path_nodes.py` | Write SPLAT to file, return path. |
 | JarJarSubmit3D | Submit 3D to JarJar Foundry | `nodes/foundry_nodes.py` (`foundry_submit.py`) | Submit 3D file to Foundry service. |
-| MeesaAssetsPushImage | Push Image to MeesaAssets | `nodes/meesa_assets_nodes.py` | Upload IMAGE to MeesaAssets API. |
-| MeesaAssetsPushModel | Push 3D Model to MeesaAssets | `nodes/meesa_assets_nodes.py` | Upload model file to MeesaAssets API. |
-| MeesaAssetsPullImage | Pull Image from MeesaAssets | `nodes/meesa_assets_nodes.py` | Download image asset as IMAGE. |
-| MeesaAssetsPushModel3D | Push 3D (File3D) to MeesaAssets | `nodes/meesa_assets_nodes.py` | Upload File3D link to MeesaAssets API. |
+| JarJarPushImage | JarJar Push Image | `nodes/meesa_assets_nodes.py` | Upload IMAGE to MeesaAssets API. |
+| JarJarPushModel | JarJar Push Model | `nodes/meesa_assets_nodes.py` | Upload model file to MeesaAssets API. |
+| JarJarPullImage | JarJar Pull Image | `nodes/meesa_assets_nodes.py` | Download image asset as IMAGE. |
+| JarJarPushModel3D | JarJar Push Model 3D | `nodes/meesa_assets_nodes.py` | Upload File3D link to MeesaAssets API. |
 
 ## 3D-Splat
 

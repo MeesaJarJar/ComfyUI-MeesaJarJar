@@ -5,10 +5,13 @@
 """
 
 import csv
+import logging
 import os
 
+log = logging.getLogger("jarjar")
 
-class ListFilesNode:
+
+class JarJarListFiles:
     """List files in a folder, optionally stripping extensions."""
 
     @classmethod
@@ -33,7 +36,7 @@ class ListFilesNode:
             if include_extensions == "disable":
                 files = [os.path.splitext(f)[0] for f in files]
         except OSError as e:
-            print(f"Error listing files: {e}")
+            log.info("Error listing files: %s", e)
             files = []
         return (files,)
 
@@ -59,7 +62,7 @@ class JarJarFolderFilesByExt:
     def list_files_by_ext(self, folder, extension):
         folder = (folder or "").strip().strip("\"'").strip()
         if not folder or not os.path.isdir(folder):
-            print(f"JarJarFolderFilesByExt: folder not found: {folder}")
+            log.info("JarJarFolderFilesByExt: folder not found: %s", folder)
             return ([],)
         ext_set = set()
         for part in (extension or "").replace(";", ",").split(","):
@@ -77,7 +80,7 @@ class JarJarFolderFilesByExt:
         try:
             names = os.listdir(folder)
         except OSError as e:
-            print(f"JarJarFolderFilesByExt error listing: {e}")
+            log.info("JarJarFolderFilesByExt error listing: %s", e)
             return ([],)
         paths = []
         for n in names:
@@ -176,7 +179,7 @@ class JarJarCSVFileToList:
         try:
             file_path = (file_path or "").strip()
             if not file_path or not os.path.isfile(file_path):
-                print(f"JarJarCSVFileToList: file not found: {file_path}")
+                log.info("JarJarCSVFileToList: file not found: %s", file_path)
                 return ([],)
             if delimiter == "\\t":
                 delimiter = "\t"
@@ -195,7 +198,7 @@ class JarJarCSVFileToList:
                         continue
                     items.append(value)
         except (OSError, ValueError, csv.Error) as e:
-            print(f"JarJarCSVFileToList error: {e}")
+            log.info("JarJarCSVFileToList error: %s", e)
             return ([],)
         return (items,)
 
@@ -229,7 +232,7 @@ class JarJarRangeIntLarge:
 
 
 NODE_CLASS_MAPPINGS = {
-    "ListFilesNode": ListFilesNode,
+    "JarJarListFiles": JarJarListFiles,
     "JarJarFolderFilesByExt": JarJarFolderFilesByExt,
     "JarJarTextList": JarJarTextList,
     "JarJarCSVFileToList": JarJarCSVFileToList,
@@ -238,7 +241,7 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "ListFilesNode": "List Files Node",
+    "JarJarListFiles": "JarJar List Files",
     "JarJarFolderFilesByExt": "JarJar: Folder Files by Extension",
     "JarJarTextList": "JarJar Text List",
     "JarJarCSVFileToList": "JarJar CSV File To List",

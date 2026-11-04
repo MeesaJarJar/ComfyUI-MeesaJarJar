@@ -98,7 +98,7 @@ def _splat_points_to_mesh(xyz, rgb, alpha, file_path, file_format, label, extra_
             try:
                 pcd.orient_normals_consistent_tangent_plane(100)
             except Exception:
-                pass
+                log.debug("%s orient normals skipped", label, exc_info=True)
 
             log.info("%s poisson: normals radius=%.5f diag=%.4f", label, radius, diag)
             mesh_o3d, _ = o3d.geometry.TriangleMesh.create_from_point_cloud_poisson(pcd, depth=9, width=0, scale=1.1, linear_fit=False)
@@ -138,7 +138,7 @@ def _splat_points_to_mesh(xyz, rgb, alpha, file_path, file_format, label, extra_
                     if not mask.all():
                         mesh.update_faces(mask)
                 except Exception:
-                    pass
+                    log.debug("%s cleanup faces skipped", label, exc_info=True)
                 mesh.metadata['file_path'] = file_path
                 mesh.metadata['file_name'] = os.path.basename(file_path)
                 mesh.metadata['file_format'] = file_format
@@ -401,6 +401,7 @@ class JarJarLoadMesh(io.ComfyNode):
         try:
             n_faces = len(getattr(loaded_mesh, 'faces', []))
         except Exception:
+            log.debug("LoadMesh face count unreadable", exc_info=True)
             n_faces = 0
         log.info("Loaded: %s vertices, %s faces", len(loaded_mesh.vertices), n_faces)
 

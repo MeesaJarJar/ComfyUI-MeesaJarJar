@@ -1,10 +1,27 @@
 """MeesaJarJar audio nodes - extracted from jarjar_audio.py + jarjar_audio_load_sample.py (Old pack)."""
 
+import logging
 import os
 import uuid
 
 import torch
 import torchaudio
+
+log = logging.getLogger("jarjar")
+
+try:
+    import folder_paths
+except ImportError:
+    folder_paths = None
+
+
+def _default_audio_output_dir():
+    try:
+        if folder_paths is not None:
+            return folder_paths.get_output_directory()
+    except (OSError, ValueError, AttributeError):
+        pass
+    return ""
 
 
 class JarJarAudioSaveAudio:
@@ -16,7 +33,7 @@ class JarJarAudioSaveAudio:
             "required": {
                 "file_path": ("STRING", {
                     "multiline": False,
-                    "default": "C:/ComfyUIY/ComfyUI/output/audio"
+                    "default": _default_audio_output_dir()
                 }),
                 "audio": ("AUDIO",),
             }
@@ -43,10 +60,12 @@ class JarJarAudioSaveAudio:
 
         filename = f"{uuid.uuid4()}.wav"
         full_path = os.path.join(file_path, filename)
-        os.makedirs(os.path.dirname(full_path), exist_ok=True)
+        parent = os.path.dirname(full_path)
+        if parent:
+            os.makedirs(parent, exist_ok=True)
 
         torchaudio.save(full_path, waveform, sample_rate)
-        print(f"[JarJarAudio] Saved to {full_path}")
+        log.info("[JarJarAudio] Saved to %s", full_path)
 
         return (audio, filename, full_path)
 
@@ -62,7 +81,7 @@ class JarJarAudioLoadSample:
         return {
             "required": {
                 "folder_path": ("STRING", {
-                    "default": "C:/Users/SERVER/Desktop/Comfy3D_WinPortable/ComfyUI/input/AudioSamples/cv-valid-train"
+                    "default": ""
                 }),
                 "sample_index": ("INT", {
                     "default": 1,

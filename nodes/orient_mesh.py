@@ -67,14 +67,14 @@ class JarJarOrientMesh(io.ComfyNode):
             if normals.shape == verts.shape:
                 mesh.vertex_normals = normals @ R.T
         except Exception:
-            pass
+            log.debug("OrientMesh: vertex_normals rotation skipped", exc_info=True)
 
         try:
             meta = dict(getattr(mesh, "metadata", {}) or {})
             meta["jarjar_orientation_deg"] = [rx, ry, rz]
             mesh.metadata = meta
         except Exception:
-            pass
+            log.debug("OrientMesh: metadata update skipped", exc_info=True)
 
         log.info("Oriented mesh: rotate_x=%.1f rotate_y=%.1f rotate_z=%.1f", rx, ry, rz)
         return io.NodeOutput(mesh)
