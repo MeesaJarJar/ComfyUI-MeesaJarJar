@@ -36,6 +36,7 @@ Unified pack merging all JarJar node sets. Base path: `ComfyUI/custom_nodes/Comf
 | JarJarBrightnessContrast | JarJar: Brightness/Contrast | `nodes/classic_nodes.py` (`classic_brightness_contrast.py`) | Adjust brightness/contrast. |
 | JarJarRemoveBackground | JarJar: Remove Background | `nodes/classic_nodes.py` (`classic_remove_background.py`) | Dark pixels to transparent; outputs RGBA. |
 | JarJarShadow | JarJar: Shadow | `nodes/classic_nodes.py` (`classic_shadow.py`) | Drop shadow effect. |
+| JarJar9SliceViewer | JarJar 9 Slice Viewer | `nodes/nine_slice_viewer_nodes.py` | Preview a 9-slice tiling from nine equal thirds. |
 
 ## Utils
 
